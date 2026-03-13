@@ -10,14 +10,16 @@
 
 <!-- PROTO NAV -->
 <nav class="proto-nav">
-  <span class="ps">Customer Portal</span>
+  <span class="ps">Retailer Portal</span>
   <a onclick="show('login')" class="active">01·Login</a>
   <a onclick="show('catalog')">02·Catalog</a>
   <a onclick="show('product')">03·Product+Schematic</a>
   <a onclick="show('cart')">04·Cart</a>
   <a onclick="show('checkout')">05·Checkout</a>
-  <a onclick="show('account')">06·Account</a>
-  <a onclick="show('orders')">07·Order History</a>
+  <div class="pdiv"></div>
+  <span class="ps">Internal Admin</span>
+  <a onclick="show('account')">06·User Mgmt</a>
+  <a onclick="show('orders')">07·Order Support</a>
   <div class="pdiv"></div>
   <span class="ps">Schematic Builder</span>
   <a onclick="show('sb-home')">08·Home</a>
@@ -27,6 +29,9 @@
   <div class="pdiv"></div>
   <span class="ps">Product Entry</span>
   <a onclick="show('pe-form')">12·Product Entry</a>
+  <div class="pdiv"></div>
+  <span class="ps">Vendor Portal</span>
+  <a onclick="show('vendor-portal')">13·Vendor Orders</a>
 </nav>
 
 
@@ -56,7 +61,7 @@
 <div id="catalog" class="screen">
   <div class="tnav">
     <div style="display:flex;align-items:center;gap:22px;">
-      <div class="tlogo">PARTS PORTAL</div>
+      <div class="tlogo">RETAILER PORTAL</div>
       <div class="tlinks"><span class="on">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div>
     </div>
     <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
@@ -133,7 +138,7 @@
 ══════════════════════════════════════ -->
 <div id="product" class="screen">
   <div class="tnav">
-    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">PARTS PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div></div>
+    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">RETAILER PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div></div>
     <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
   </div>
   <div class="main">
@@ -189,7 +194,7 @@
 ══════════════════════════════════════ -->
 <div id="cart" class="screen">
   <div class="tnav">
-    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">PARTS PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div></div>
+    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">RETAILER PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div></div>
     <div class="tright"><span style="font-family:var(--mono);font-size:11px;font-weight:600;">Cart (3)</span><div class="av">JD</div></div>
   </div>
   <div class="main">
@@ -226,7 +231,7 @@
 ══════════════════════════════════════ -->
 <div id="checkout" class="screen">
   <div class="tnav">
-    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">PARTS PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div></div>
+    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">RETAILER PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div></div>
     <div class="tright"><div class="av">JD</div></div>
   </div>
   <div class="main">
@@ -325,7 +330,7 @@
 ══════════════════════════════════════ -->
 <div id="account" class="screen">
   <div class="tnav">
-    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">PARTS PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('orders')">My Orders</span><span class="on">Admin</span></div></div>
+    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">INTERNAL ADMIN</div><div class="tlinks"><span class="on">User Management</span><span onclick="show('orders')">Order Support</span></div></div>
     <div class="tright"><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-right:6px;">Admin View</span><div class="av">AD</div></div>
   </div>
   <div class="main">
@@ -458,38 +463,166 @@
 ══════════════════════════════════════ -->
 <div id="orders" class="screen">
   <div class="tnav">
-    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">PARTS PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span class="on">My Orders</span><span onclick="show('account')">Account</span></div></div>
-    <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (0)</span><div class="av">JD</div></div>
+    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">INTERNAL ADMIN</div><div class="tlinks"><span onclick="show('account')">User Management</span><span class="on">Order Support</span></div></div>
+    <div class="tright"><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-right:6px;">Admin View</span><div class="av">AD</div></div>
   </div>
   <div class="main">
-    <div class="ptitle">Order History</div>
-    <div class="psub">Track and review your past orders</div>
-    <div class="stats" style="grid-template-columns:repeat(3,1fr);">
+    <div class="ptitle">Order Support</div>
+    <div class="psub">View and support retailer orders — line-level status reflects each vendor's fulfillment</div>
+    <div class="stats" style="grid-template-columns:repeat(4,1fr);">
       <div class="stat"><div class="slbl">Total Orders</div><div class="sval">42</div></div>
-      <div class="stat"><div class="slbl">In Progress</div><div class="sval">2</div></div>
+      <div class="stat"><div class="slbl">Open / Active</div><div class="sval">8</div></div>
+      <div class="stat"><div class="slbl">Lines Backordered</div><div class="sval" style="color:#b45309;">3</div></div>
       <div class="stat"><div class="slbl">This Month</div><div class="sval">6</div></div>
     </div>
     <div class="filters">
-      <input class="inp" style="width:190px;" placeholder="Search order #..." />
-      <select class="fsel"><option>All Statuses</option><option>Processing</option><option>Shipped</option><option>Backordered</option></select>
+      <input class="inp" style="width:190px;" placeholder="Search order # or retailer..." />
+      <select class="fsel"><option>All Line Statuses</option><option>Pending</option><option>Processing</option><option>Shipped</option><option>Backordered</option></select>
       <input class="inp" style="width:115px;" placeholder="From date" />
       <input class="inp" style="width:115px;" placeholder="To date" />
       <button class="btn btn-o">Filter</button>
     </div>
-    <div class="twrap">
-      <table class="tbl">
-        <thead><tr><th>Order #</th><th>Date</th><th>Items</th><th>Status</th><th>Tracking</th><th></th></tr></thead>
-        <tbody>
-          <tr class="expandable" onclick="tog('e1')"><td style="font-family:var(--mono);font-weight:600;">#ORD-2924</td><td>Mar 10, 2026</td><td>3 parts · 7 qty</td><td><span class="badge b-proc">Processing</span></td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">—</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">▼ Details</td></tr>
-          <tr class="exprow open" id="e1"><td colspan="6"><div class="expcontent"><strong style="font-family:var(--mono);font-size:10px;">ORDER ITEMS</strong><div style="margin-top:7px;display:flex;flex-direction:column;gap:3px;"><div style="display:flex;gap:10px;"><span style="font-family:var(--mono);font-size:10px;min-width:85px;">532130969</span><span>Blade Assembly, 22" × 1</span></div><div style="display:flex;gap:10px;"><span style="font-family:var(--mono);font-size:10px;min-width:85px;">532174358</span><span>Drive Belt, Rear Wheel × 2</span></div><div style="display:flex;gap:10px;"><span style="font-family:var(--mono);font-size:10px;min-width:85px;">532110452</span><span>Air Filter Cartridge × 4</span></div></div></div></td></tr>
-          <tr class="expandable" onclick="tog('e2')"><td style="font-family:var(--mono);font-weight:600;">#ORD-2887</td><td>Mar 4, 2026</td><td>7 parts</td><td><span class="badge b-ship">Shipped</span></td><td style="font-family:var(--mono);font-size:10px;">1Z999AA1...</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">▼ Details</td></tr>
-          <tr class="exprow" id="e2"><td colspan="6"><div class="expcontent">7 parts shipped via UPS Ground. Expected delivery Mar 12, 2026.</div></td></tr>
-          <tr class="expandable" onclick="tog('e3')"><td style="font-family:var(--mono);font-weight:600;">#ORD-2801</td><td>Feb 22, 2026</td><td>2 parts</td><td><span class="badge b-back">Backordered</span></td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">—</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">▼ Details</td></tr>
-          <tr class="exprow" id="e3"><td colspan="6"><div class="expcontent">2 parts on backorder. Estimated availability: Mar 20, 2026.</div></td></tr>
-        </tbody>
-      </table>
+
+    <!-- ORDER #ORD-2924 — mixed line statuses -->
+    <div class="panel" style="margin-bottom:14px;">
+      <div class="phdr" style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <span style="font-family:var(--mono);font-weight:600;">#ORD-2924</span>
+          <span style="font-size:11px;color:var(--text-muted);">Mar 10, 2026</span>
+          <span style="font-size:11px;">Lowe's — Store #0621, Atlanta GA</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <span class="badge b-proc">Processing</span>
+          <span class="badge b-back">Backordered</span>
+          <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">3 lines · 2 vendors</span>
+        </div>
+      </div>
+      <div class="pbody" style="padding:0;">
+        <table class="tbl" style="border:none;">
+          <thead><tr><th>Part #</th><th>Description</th><th>Vendor</th><th>Qty</th><th>Status</th><th>Tracking</th></tr></thead>
+          <tbody>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;">532130969</td>
+              <td>Blade Assembly, 22"</td>
+              <td style="font-size:11px;color:var(--text-muted);">Husqvarna</td>
+              <td style="font-family:var(--mono);text-align:center;">1</td>
+              <td><span class="badge b-proc">Processing</span></td>
+              <td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">—</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;">532174358</td>
+              <td>Drive Belt, Rear Wheel</td>
+              <td style="font-size:11px;color:var(--text-muted);">Husqvarna</td>
+              <td style="font-family:var(--mono);text-align:center;">2</td>
+              <td><span class="badge b-back">Backordered</span></td>
+              <td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Est. Mar 20</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;">791-182974</td>
+              <td>Spark Plug NGK CMR6H</td>
+              <td style="font-size:11px;color:var(--text-muted);">Troy-Bilt</td>
+              <td style="font-family:var(--mono);text-align:center;">4</td>
+              <td><span class="badge b-proc">Processing</span></td>
+              <td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div style="margin-top:14px;text-align:right;"><button class="btn" onclick="show('catalog')">+ Order More Parts</button></div>
+
+    <!-- ORDER #ORD-2887 — all shipped -->
+    <div class="panel" style="margin-bottom:14px;">
+      <div class="phdr" style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <span style="font-family:var(--mono);font-weight:600;">#ORD-2887</span>
+          <span style="font-size:11px;color:var(--text-muted);">Mar 4, 2026</span>
+          <span style="font-size:11px;">Home Depot — Store #4502, Nashville TN</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <span class="badge b-ship">All Shipped</span>
+          <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">4 lines · 2 vendors</span>
+        </div>
+      </div>
+      <div class="pbody" style="padding:0;">
+        <table class="tbl" style="border:none;">
+          <thead><tr><th>Part #</th><th>Description</th><th>Vendor</th><th>Qty</th><th>Status</th><th>Tracking</th></tr></thead>
+          <tbody>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;">532110452</td>
+              <td>Air Filter Cartridge</td>
+              <td style="font-size:11px;color:var(--text-muted);">Husqvarna</td>
+              <td style="font-family:var(--mono);text-align:center;">4</td>
+              <td><span class="badge b-ship">Shipped</span></td>
+              <td style="font-family:var(--mono);font-size:10px;">1Z999AA1012345678</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;">532193197</td>
+              <td>Wheel Assembly, Front</td>
+              <td style="font-size:11px;color:var(--text-muted);">Husqvarna</td>
+              <td style="font-family:var(--mono);text-align:center;">2</td>
+              <td><span class="badge b-ship">Shipped</span></td>
+              <td style="font-family:var(--mono);font-size:10px;">1Z999AA1012345678</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;">490-241-0009</td>
+              <td>Carburetor Kit</td>
+              <td style="font-size:11px;color:var(--text-muted);">Craftsman</td>
+              <td style="font-family:var(--mono);text-align:center;">1</td>
+              <td><span class="badge b-ship">Shipped</span></td>
+              <td style="font-family:var(--mono);font-size:10px;">394821049302</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;">490-250-0014</td>
+              <td>Oil Drain Valve</td>
+              <td style="font-size:11px;color:var(--text-muted);">Craftsman</td>
+              <td style="font-family:var(--mono);text-align:center;">1</td>
+              <td><span class="badge b-ship">Shipped</span></td>
+              <td style="font-family:var(--mono);font-size:10px;">394821049302</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ORDER #ORD-2801 — partial backorder -->
+    <div class="panel" style="margin-bottom:14px;">
+      <div class="phdr" style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <span style="font-family:var(--mono);font-weight:600;">#ORD-2801</span>
+          <span style="font-size:11px;color:var(--text-muted);">Feb 22, 2026</span>
+          <span style="font-size:11px;">Lowe's — Store #1142, Charlotte NC</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <span class="badge b-ship">Shipped</span>
+          <span class="badge b-back">Backordered</span>
+          <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">2 lines · 1 vendor</span>
+        </div>
+      </div>
+      <div class="pbody" style="padding:0;">
+        <table class="tbl" style="border:none;">
+          <thead><tr><th>Part #</th><th>Description</th><th>Vendor</th><th>Qty</th><th>Status</th><th>Tracking</th></tr></thead>
+          <tbody>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;">532183567</td>
+              <td>Cable, Zone Control</td>
+              <td style="font-size:11px;color:var(--text-muted);">Husqvarna</td>
+              <td style="font-family:var(--mono);text-align:center;">1</td>
+              <td><span class="badge b-ship">Shipped</span></td>
+              <td style="font-family:var(--mono);font-size:10px;">1Z999AA1098765432</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;">532130969</td>
+              <td>Blade Assembly, 22"</td>
+              <td style="font-size:11px;color:var(--text-muted);">Husqvarna</td>
+              <td style="font-family:var(--mono);text-align:center;">1</td>
+              <td><span class="badge b-back">Backordered</span></td>
+              <td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Est. Mar 20</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -517,7 +650,7 @@
       <div class="panel" style="cursor:pointer;" onclick="show('pe-form')"><div class="pbody" style="padding:22px;"><div style="font-family:var(--mono);font-size:13px;font-weight:600;margin-bottom:5px;">+ Create New Product</div><div style="font-size:12px;color:var(--text-muted);">Start a new schematic from scratch</div></div></div>
       <div class="panel" style="cursor:pointer;" onclick="show('sb-builder')"><div class="pbody" style="padding:22px;"><div style="font-family:var(--mono);font-size:13px;font-weight:600;margin-bottom:5px;">↑ Import JSON</div><div style="font-size:12px;color:var(--text-muted);">Load a previously exported schematic file</div></div></div>
       <div class="panel" style="cursor:pointer;" onclick="show('sb-inventory')"><div class="pbody" style="padding:22px;"><div style="font-family:var(--mono);font-size:13px;font-weight:600;margin-bottom:5px;">☰ View Inventory</div><div style="font-size:12px;color:var(--text-muted);">Browse all submitted products</div></div></div>
-      <div class="panel" style="cursor:pointer;" onclick="show('sb-avail')"><div class="pbody" style="padding:22px;"><div style="font-family:var(--mono);font-size:13px;font-weight:600;margin-bottom:5px;">✓ Vendor Availability</div><div style="font-size:12px;color:var(--text-muted);">Configure per-vendor part visibility</div></div></div>
+      <div class="panel" style="cursor:pointer;" onclick="show('sb-avail')"><div class="pbody" style="padding:22px;"><div style="font-family:var(--mono);font-size:13px;font-weight:600;margin-bottom:5px;">✓ Retailer Availability</div><div style="font-size:12px;color:var(--text-muted);">Configure per-retailer part visibility</div></div></div>
     </div>
     <div class="panel">
       <div class="phdr">Recent Activity</div>
@@ -695,9 +828,9 @@
     <div class="tright"><button class="btn btn-g btn-sm" onclick="show('sb-inventory')">← Inventory</button><div class="av">SA</div></div>
   </div>
   <div class="main">
-    <div class="bc"><span onclick="show('sb-inventory')" style="cursor:pointer;">Inventory</span><span class="bcsep">›</span><strong>Husqvarna LM-2200 — Vendor Availability</strong></div>
-    <div class="ptitle">Vendor Availability</div>
-    <div class="psub">Configure which parts are visible per vendor for this product</div>
+    <div class="bc"><span onclick="show('sb-inventory')" style="cursor:pointer;">Inventory</span><span class="bcsep">›</span><strong>Husqvarna LM-2200 — Retailer Availability</strong></div>
+    <div class="ptitle">Retailer Availability</div>
+    <div class="psub">Configure which parts are visible per retailer for this product</div>
     <div class="atabs">
       <div class="atab on">Lowe's</div>
       <div class="atab">Home Depot</div>
@@ -705,7 +838,7 @@
     </div>
     <div style="display:grid;grid-template-columns:270px 1fr;gap:22px;">
       <div>
-        <div class="phdr" style="border:2px solid var(--border);border-bottom:2px solid var(--border-dark);">Parts — Lowe's</div>
+        <div class="phdr" style="border:2px solid var(--border);border-bottom:2px solid var(--border-dark);">Parts — Lowe's (Retailer)</div>
         <div style="background:var(--surface);border:2px solid var(--border);border-top:none;padding:11px;">
           <label class="chkrow" style="margin-bottom:9px;padding-bottom:9px;border-bottom:1px solid var(--border);"><div class="chk on">✓</div><span style="font-size:12px;font-weight:500;">Enable All</span></label>
           <label class="chkrow"><div class="chk on">✓</div><div><div style="font-size:12px;">Blade Assembly, 22"</div><div class="pnum">532130969</div></div></label>
@@ -802,6 +935,216 @@
   </div>
 </div>
 
+
+
+<!-- ══════════════════════════════════════
+     13  VENDOR PORTAL — ORDER FULFILLMENT
+══════════════════════════════════════ -->
+<div id="vendor-portal" class="screen">
+  <div class="tnav">
+    <div style="display:flex;align-items:center;gap:22px;">
+      <div class="tlogo">VENDOR PORTAL</div>
+      <div class="tlinks">
+        <span class="on">Orders</span>
+        <span>Account</span>
+      </div>
+    </div>
+    <div class="tright"><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Husqvarna North America</span><div class="av">HV</div></div>
+  </div>
+  <div class="main">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;padding-top:10px;">
+      <div>
+        <div class="ptitle" style="font-size:20px;">Orders to Fulfill</div>
+        <div class="psub">Parts orders assigned to your catalog — action required</div>
+      </div>
+      <div style="display:flex;gap:9px;align-items:center;">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Last updated: Mar 13, 2026 9:41am</span>
+        <button class="btn btn-g btn-sm">↻ Refresh</button>
+      </div>
+    </div>
+
+    <div class="stats" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px;">
+      <div class="stat"><div class="slbl">New Orders</div><div class="sval" style="color:#b45309;">7</div></div>
+      <div class="stat"><div class="slbl">In Progress</div><div class="sval">12</div></div>
+      <div class="stat"><div class="slbl">Shipped Today</div><div class="sval">5</div></div>
+      <div class="stat"><div class="slbl">Avg. Fulfillment</div><div class="sval">1.8d</div></div>
+    </div>
+
+    <div class="panel" style="margin-bottom:20px;">
+      <div class="phdr" style="display:flex;justify-content:space-between;align-items:center;">
+        <span>Order Queue</span>
+        <div style="display:flex;gap:8px;">
+          <select class="fsel" style="font-size:11px;padding:4px 8px;">
+            <option>All Statuses</option>
+            <option>New</option>
+            <option>In Progress</option>
+            <option>Awaiting Pickup</option>
+            <option>Shipped</option>
+          </select>
+          <input class="inp" style="font-size:11px;padding:4px 8px;width:180px;" placeholder="Search order # or part…" />
+        </div>
+      </div>
+      <div class="pbody" style="padding:0;">
+        <table class="tbl" style="border:none;">
+          <thead>
+            <tr>
+              <th>Order #</th>
+              <th>Retailer</th>
+              <th>Store</th>
+              <th>Parts</th>
+              <th>Order Date</th>
+              <th>Due</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;font-weight:600;">ORD-20482</td>
+              <td>Lowe's</td>
+              <td style="font-size:11px;color:var(--text-muted);">Store #0621 — Atlanta, GA</td>
+              <td style="font-family:var(--mono);font-size:11px;">3 parts</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 13, 2026</td>
+              <td style="font-family:var(--mono);font-size:10px;color:#b45309;font-weight:600;">Mar 15</td>
+              <td><span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">New</span></td>
+              <td><button class="btn btn-sm">View →</button></td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;font-weight:600;">ORD-20479</td>
+              <td>Lowe's</td>
+              <td style="font-size:11px;color:var(--text-muted);">Store #1142 — Charlotte, NC</td>
+              <td style="font-family:var(--mono);font-size:11px;">7 parts</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 13, 2026</td>
+              <td style="font-family:var(--mono);font-size:10px;color:#b45309;font-weight:600;">Mar 15</td>
+              <td><span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">New</span></td>
+              <td><button class="btn btn-sm">View →</button></td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;font-weight:600;">ORD-20471</td>
+              <td>Home Depot</td>
+              <td style="font-size:11px;color:var(--text-muted);">Store #4502 — Nashville, TN</td>
+              <td style="font-family:var(--mono);font-size:11px;">2 parts</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 12, 2026</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 16</td>
+              <td><span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">New</span></td>
+              <td><button class="btn btn-sm">View →</button></td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;font-weight:600;">ORD-20465</td>
+              <td>Lowe's</td>
+              <td style="font-size:11px;color:var(--text-muted);">Store #0318 — Memphis, TN</td>
+              <td style="font-family:var(--mono);font-size:11px;">5 parts</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 11, 2026</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 14</td>
+              <td><span class="badge" style="background:#e0f2fe;color:#0369a1;border-color:#bae6fd;">In Progress</span></td>
+              <td><button class="btn btn-sm">View →</button></td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;font-weight:600;">ORD-20458</td>
+              <td>Bass Pro Shops</td>
+              <td style="font-size:11px;color:var(--text-muted);">Store #0090 — Springfield, MO</td>
+              <td style="font-family:var(--mono);font-size:11px;">11 parts</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 10, 2026</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 14</td>
+              <td><span class="badge" style="background:#e0f2fe;color:#0369a1;border-color:#bae6fd;">In Progress</span></td>
+              <td><button class="btn btn-sm">View →</button></td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;font-weight:600;">ORD-20441</td>
+              <td>Home Depot</td>
+              <td style="font-size:11px;color:var(--text-muted);">Store #6218 — Birmingham, AL</td>
+              <td style="font-family:var(--mono);font-size:11px;">4 parts</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 9, 2026</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 13</td>
+              <td><span class="badge" style="background:#dcfce7;color:#166534;border-color:#bbf7d0;">Awaiting Pickup</span></td>
+              <td><button class="btn btn-sm">View →</button></td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:11px;font-weight:600;">ORD-20430</td>
+              <td>Lowe's</td>
+              <td style="font-size:11px;color:var(--text-muted);">Store #2211 — Knoxville, TN</td>
+              <td style="font-family:var(--mono);font-size:11px;">6 parts</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 8, 2026</td>
+              <td style="font-family:var(--mono);font-size:10px;">Mar 12</td>
+              <td><span class="badge b-act">Shipped</span></td>
+              <td><button class="btn btn-g btn-sm">View →</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 300px;gap:20px;">
+      <div class="panel">
+        <div class="phdr">Order Detail — ORD-20482</div>
+        <div class="pbody">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+            <div>
+              <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:3px;">Retailer / Store</div>
+              <div style="font-size:13px;font-weight:600;">Lowe's — Store #0621</div>
+              <div style="font-size:11px;color:var(--text-muted);">4000 Buford Hwy NE, Atlanta, GA 30345</div>
+            </div>
+            <div>
+              <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:3px;">PO / Reference</div>
+              <div style="font-size:13px;font-weight:600;">PO-2026-00821</div>
+              <div style="font-size:11px;color:var(--text-muted);">Cost Center: 4410-OPE</div>
+            </div>
+          </div>
+          <table class="tbl" style="border:none;margin-bottom:14px;">
+            <thead><tr><th>Part #</th><th>Description</th><th>Qty</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="font-family:var(--mono);font-size:11px;">532130969</td>
+                <td>Blade Assembly, 22"</td>
+                <td style="font-family:var(--mono);text-align:center;">2</td>
+                <td><span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">Pending</span></td>
+              </tr>
+              <tr>
+                <td style="font-family:var(--mono);font-size:11px;">532174358</td>
+                <td>Drive Belt, Rear Wheel</td>
+                <td style="font-family:var(--mono);text-align:center;">1</td>
+                <td><span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">Pending</span></td>
+              </tr>
+              <tr>
+                <td style="font-family:var(--mono);font-size:11px;">532110452</td>
+                <td>Air Filter Cartridge</td>
+                <td style="font-family:var(--mono);text-align:center;">3</td>
+                <td><span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">Pending</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="display:flex;gap:9px;justify-content:flex-end;">
+            <button class="btn btn-o">Mark Item Unavailable</button>
+            <button class="btn">Confirm & Mark Ready →</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="panel" style="margin-bottom:14px;">
+          <div class="phdr">Fulfillment Notes</div>
+          <div class="pbody">
+            <textarea class="inp" style="width:100%;height:80px;resize:none;font-size:11px;" placeholder="Add note for this order (visible to admin)…"></textarea>
+            <button class="btn btn-g btn-sm" style="width:100%;justify-content:center;margin-top:8px;">Save Note</button>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="phdr">Shipping Info</div>
+          <div class="pbody">
+            <div class="fld" style="margin-bottom:9px;">
+              <label class="lbl">Carrier</label>
+              <select class="fsel" style="width:100%;"><option>UPS Ground</option><option>FedEx Ground</option><option>LTL Freight</option><option>Will Call</option></select>
+            </div>
+            <div class="fld" style="margin-bottom:9px;">
+              <label class="lbl">Tracking #</label>
+              <input class="inp" style="width:100%;" placeholder="Enter tracking number" />
+            </div>
+            <button class="btn" style="width:100%;justify-content:center;">Mark as Shipped →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script src="wireframes.js"></script>

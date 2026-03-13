@@ -1,23 +1,45 @@
-# ReadySetData Wireframes
+# ReadySetData Interactive Wireframes
 
-Interactive wireframe prototype for the ReadySetData B2B platform — covering the end-to-end experience for vendor and retailer users.
+Interactive wireframe prototype for the ReadySetData platform — covering the retailer ordering portal, internal admin tools, and vendor fulfillment portal.
 
 ## Screens Included
 
-| # | Screen |
-|---|--------|
-| 01 | Landing Page |
-| 02 | Login |
-| 03 | Product Catalog |
-| 04 | Product Detail |
-| 05 | Checkout (retailer/store-focused) |
-| 06 | Admin — User Management |
-| 07 | Order Confirmation |
-| 08 | Order History |
-| 09 | Order Detail |
-| 10 | Vendor Dashboard |
-| 11 | Vendor Product Management |
-| 12 | Analytics |
+### Retailer Portal
+| # | Screen | Status |
+|---|--------|--------|
+| 01 | Login | Done |
+| 02 | Product Catalog | Done |
+| 03 | Product Detail + Schematic | Done |
+| 04 | Cart | Done |
+| 05 | Checkout (store/retailer-focused) | Done |
+
+### Internal Admin
+| # | Screen | Status |
+|---|--------|--------|
+| 06 | User Management | Done |
+| 07 | Order Support (per-line status, multi-vendor) | Done |
+
+### Schematic Builder (Internal Admin Tool)
+| # | Screen | Status |
+|---|--------|--------|
+| 08 | Schematic Admin Home | Done |
+| 09 | Schematic Builder | Done |
+| 10 | Inventory | Done |
+| 11 | Retailer Availability | Done |
+| 12 | Product Entry | Done |
+
+### Vendor Portal
+| # | Screen | Status |
+|---|--------|--------|
+| 13 | Vendor Portal — Orders & Fulfillment | Done |
+
+## Future / Out of Scope
+
+The following is not part of the current engagement scope but documented here for future planning.
+
+| Screen | Description | Notes |
+|--------|-------------|-------|
+| Analytics | Admin-facing reporting — order volume, fulfillment rates, retailer activity | Explicitly out of scope for this engagement. Planned for a future phase. |
 
 ## How to View
 
