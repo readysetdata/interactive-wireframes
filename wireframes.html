@@ -28,7 +28,8 @@
   <a onclick="show('sb-avail')">11·Availability</a>
   <div class="pdiv"></div>
   <span class="ps">Product Entry</span>
-  <a onclick="show('pe-form')">12·Product Entry</a>
+  <a onclick="show('pe-form')">12·Base Product</a>
+  <a onclick="show('pe-retailer')">12b·Retailer Info</a>
   <div class="pdiv"></div>
   <span class="ps">Vendor Portal</span>
   <a onclick="show('vendor-portal')">13·Vendor Orders</a>
@@ -149,15 +150,15 @@
     <div style="display:grid;grid-template-columns:1fr 290px;gap:20px;margin-bottom:18px;">
       <!-- Schematic -->
       <div>
-        <div class="phdr" style="border:2px solid var(--border);border-bottom:none;">Interactive Schematic — Click hotspot to highlight part</div>
-        <div style="background:var(--surface);border:2px solid var(--border);min-height:380px;display:flex;align-items:center;justify-content:center;position:relative;">
+        <div class="phdr" style="border:2px solid var(--border);border-bottom:none;">Interactive Schematic — Click a hotspot to add to cart</div>
+        <div class="schematic-wrap" style="background:var(--surface);border:2px solid var(--border);min-height:380px;display:flex;align-items:center;justify-content:center;position:relative;">
           <div class="cph" style="width:80%;height:300px;">
             [ SCHEMATIC DIAGRAM ]
-            <div class="hs" style="top:30px;left:50px;">1</div>
-            <div class="hs" style="top:70px;right:55px;">2</div>
-            <div class="hs" style="top:140px;left:85px;">3</div>
-            <div class="hs" style="bottom:50px;left:60px;">4</div>
-            <div class="hs" style="bottom:40px;right:75px;">5</div>
+            <div class="hs" style="top:30px;left:50px;" onclick="showPartPopup(this,'532130969','Blade Assembly, 22&quot;',5)">1</div>
+            <div class="hs" style="top:70px;right:55px;" onclick="showPartPopup(this,'532174358','Drive Belt, Rear Wheel',3)">2</div>
+            <div class="hs" style="top:140px;left:85px;" onclick="showPartPopup(this,'532110452','Air Filter Cartridge',10)">3</div>
+            <div class="hs" style="bottom:50px;left:60px;" onclick="showPartPopup(this,'531300403','Spark Plug NGK CMR6H',4)">4</div>
+            <div class="hs" style="bottom:40px;right:75px;" onclick="showPartPopup(this,'532193197','Wheel Assembly, Front',2)">5</div>
           </div>
         </div>
         <div style="display:flex;gap:5px;padding:9px;background:var(--surface);border:2px solid var(--border);border-top:none;">
@@ -199,7 +200,7 @@
   </div>
   <div class="main">
     <div class="ptitle">Your Cart</div>
-    <div class="psub">Review items before checkout</div>
+    <div class="psub">Confirm your store and review items before checkout</div>
     <div style="display:grid;grid-template-columns:1fr 270px;gap:22px;">
       <div>
         <table class="tbl">
@@ -215,11 +216,34 @@
           <button class="btn" onclick="show('checkout')">Proceed to Checkout →</button>
         </div>
       </div>
-      <div class="cbox">
-        <div class="cbox-t">Order Summary</div>
-        <div class="cline"><span>Items (3 parts)</span><span style="font-family:var(--mono);">7 total qty</span></div>
-        <div class="cline"><span>Shipping</span><span style="font-family:var(--mono);color:var(--text-muted);">TBD</span></div>
-        <div style="margin-top:13px;"><button class="btn" style="width:100%;justify-content:center;" onclick="show('checkout')">Checkout →</button></div>
+      <div>
+        <!-- STORE CONFIRMATION -->
+        <div class="panel" style="margin-bottom:14px;">
+          <div class="phdr">Confirm Store</div>
+          <div class="pbody">
+            <div class="fld" style="margin-bottom:10px;">
+              <label class="lbl">Ordering Store <span style="color:var(--accent);">*</span></label>
+              <select class="inp" style="width:100%;margin-top:4px;">
+                <option>— Select a store —</option>
+                <option selected>Lowe's — Store #0621 · Atlanta, GA</option>
+                <option>Lowe's — Store #1142 · Charlotte, NC</option>
+                <option>Lowe's — Store #0318 · Memphis, TN</option>
+              </select>
+            </div>
+            <div style="background:var(--tag-bg);border:1px solid var(--border);border-radius:4px;padding:9px 11px;font-size:11px;line-height:1.7;color:var(--text-muted);">
+              <span style="font-weight:600;color:var(--text);">Lowe's — Store #0621</span><br/>
+              4000 Buford Hwy NE<br/>
+              Atlanta, GA 30345
+            </div>
+          </div>
+        </div>
+        <!-- ORDER SUMMARY -->
+        <div class="cbox">
+          <div class="cbox-t">Order Summary</div>
+          <div class="cline"><span>Items (3 parts)</span><span style="font-family:var(--mono);">7 total qty</span></div>
+          <div class="cline"><span>Shipping</span><span style="font-family:var(--mono);color:var(--text-muted);">TBD</span></div>
+          <div style="margin-top:13px;"><button class="btn" style="width:100%;justify-content:center;" onclick="show('checkout')">Checkout →</button></div>
+        </div>
       </div>
     </div>
   </div>
@@ -240,41 +264,25 @@
     <div style="display:grid;grid-template-columns:1fr 270px;gap:22px;">
       <div>
 
-        <!-- STORE INFORMATION -->
+        <!-- STORE CONFIRMED -->
         <div class="panel" style="margin-bottom:16px;">
-          <div class="phdr">Store Information</div>
-          <div class="pbody">
-            <div class="frow">
-              <div class="fld"><label class="lbl">Store Number <span style="color:var(--accent);">*</span></label><input class="inp" placeholder="e.g. 0542" /></div>
-              <div class="fld"><label class="lbl">Store Name</label><input class="inp" placeholder="e.g. Lowe's — Madison West" /></div>
-            </div>
-            <div class="frow">
-              <div class="fld"><label class="lbl">Ordering Contact</label><input class="inp" placeholder="Full name" /></div>
-              <div class="fld"><label class="lbl">Contact Phone / Ext.</label><input class="inp" placeholder="(608) 555-0100 x4" /></div>
-            </div>
+          <div class="phdr" style="display:flex;justify-content:space-between;align-items:center;">
+            <span>Shipping To</span>
+            <span style="font-size:10px;font-weight:400;color:var(--text-muted);cursor:pointer;" onclick="show('cart')">← Change store</span>
           </div>
-        </div>
-
-        <!-- SHIP-TO ADDRESS -->
-        <div class="panel" style="margin-bottom:16px;">
-          <div class="phdr">Ship-To Address</div>
           <div class="pbody">
-            <div class="fld" style="margin-bottom:9px;">
-              <label class="lbl">Ship To</label>
-              <div style="display:flex;gap:14px;margin-top:4px;">
-                <label style="display:flex;align-items:center;gap:5px;font-size:11px;cursor:pointer;"><input type="radio" name="shipto" checked /> Store / Location</label>
-                <label style="display:flex;align-items:center;gap:5px;font-size:11px;cursor:pointer;"><input type="radio" name="shipto" /> Distribution Center (DC)</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div>
+                <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">Store</div>
+                <div style="font-size:13px;font-weight:700;">Lowe's — Store #0621</div>
+                <div style="font-size:11px;color:var(--text-muted);margin-top:3px;">4000 Buford Hwy NE<br/>Atlanta, GA 30345</div>
               </div>
-            </div>
-            <div class="fld"><label class="lbl">Street Address</label><input class="inp" placeholder="1234 Retail Pkwy" /></div>
-            <div class="frow">
-              <div class="fld"><label class="lbl">City</label><input class="inp" placeholder="Madison" /></div>
-              <div class="fld"><label class="lbl">State</label><input class="inp" placeholder="WI" /></div>
-              <div class="fld"><label class="lbl">ZIP</label><input class="inp" placeholder="53717" /></div>
-            </div>
-            <div class="frow">
-              <div class="fld"><label class="lbl">Attn / Dept.</label><input class="inp" placeholder="Parts Dept." /></div>
-              <div class="fld"><label class="lbl">Dock / Door # (Optional)</label><input class="inp" placeholder="Receiving Door 3" /></div>
+              <div>
+                <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">Ordering Contact</div>
+                <input class="inp" placeholder="Your name" style="width:100%;margin-bottom:8px;" />
+                <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">Contact Phone / Ext.</div>
+                <input class="inp" placeholder="(404) 555-0100 x4" style="width:100%;" />
+              </div>
             </div>
           </div>
         </div>
@@ -318,7 +326,7 @@
         <div style="height:1px;background:var(--border);margin:10px 0;"></div>
         <div class="cline"><span>3 parts</span><span style="font-family:var(--mono);">7 qty</span></div>
         <div class="cline"><span>Shipping</span><span style="font-family:var(--mono);color:var(--text-muted);">Calculated</span></div>
-        <div style="margin-top:12px;padding-top:9px;border-top:1px solid var(--border);font-family:var(--mono);font-size:9px;color:var(--text-light);line-height:1.7;">Orders before 2PM CT ship same day. Order confirmation and tracking sent to ordering contact.</div>
+        <div style="margin-top:12px;padding-top:9px;border-top:1px solid var(--border);font-family:var(--mono);font-size:9px;color:var(--text-light);line-height:1.7;font-style:italic;">[Retailer-specific message]</div>
       </div>
     </div>
   </div>
@@ -472,12 +480,12 @@
     <div class="stats" style="grid-template-columns:repeat(4,1fr);">
       <div class="stat"><div class="slbl">Total Orders</div><div class="sval">42</div></div>
       <div class="stat"><div class="slbl">Open / Active</div><div class="sval">8</div></div>
-      <div class="stat"><div class="slbl">Lines Backordered</div><div class="sval" style="color:#b45309;">3</div></div>
+      <div class="stat"><div class="slbl">Lines WNS</div><div class="sval" style="color:#b45309;">3</div></div>
       <div class="stat"><div class="slbl">This Month</div><div class="sval">6</div></div>
     </div>
     <div class="filters">
       <input class="inp" style="width:190px;" placeholder="Search order # or retailer..." />
-      <select class="fsel"><option>All Line Statuses</option><option>Pending</option><option>Processing</option><option>Shipped</option><option>Backordered</option></select>
+      <select class="fsel"><option>All Line Statuses</option><option>Pending</option><option>Processing</option><option>Shipped</option><option>Will Not Ship</option></select>
       <input class="inp" style="width:115px;" placeholder="From date" />
       <input class="inp" style="width:115px;" placeholder="To date" />
       <button class="btn btn-o">Filter</button>
@@ -493,7 +501,7 @@
         </div>
         <div style="display:flex;gap:6px;align-items:center;">
           <span class="badge b-proc">Processing</span>
-          <span class="badge b-back">Backordered</span>
+          <span class="badge b-back">Will Not Ship</span>
           <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">3 lines · 2 vendors</span>
         </div>
       </div>
@@ -514,7 +522,7 @@
               <td>Drive Belt, Rear Wheel</td>
               <td style="font-size:11px;color:var(--text-muted);">Husqvarna</td>
               <td style="font-family:var(--mono);text-align:center;">2</td>
-              <td><span class="badge b-back">Backordered</span></td>
+              <td><span class="badge b-back">Will Not Ship</span></td>
               <td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Est. Mar 20</td>
             </tr>
             <tr>
@@ -594,7 +602,7 @@
         </div>
         <div style="display:flex;gap:6px;align-items:center;">
           <span class="badge b-ship">Shipped</span>
-          <span class="badge b-back">Backordered</span>
+          <span class="badge b-back">Will Not Ship</span>
           <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">2 lines · 1 vendor</span>
         </div>
       </div>
@@ -615,7 +623,7 @@
               <td>Blade Assembly, 22"</td>
               <td style="font-size:11px;color:var(--text-muted);">Husqvarna</td>
               <td style="font-family:var(--mono);text-align:center;">1</td>
-              <td><span class="badge b-back">Backordered</span></td>
+              <td><span class="badge b-back">Will Not Ship</span></td>
               <td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Est. Mar 20</td>
             </tr>
           </tbody>
@@ -673,7 +681,15 @@
 <div id="sb-builder" class="screen">
   <div class="tnav">
     <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">SCHEMATIC ADMIN</div><div class="tlinks"><span onclick="show('sb-home')">Home</span><span onclick="show('sb-inventory')">Inventory</span><span class="on">Builder</span></div></div>
-    <div class="tright"><button class="btn btn-g btn-sm" onclick="show('sb-home')">← Back</button><div class="av">SA</div></div>
+    <div class="tright">
+      <div style="display:flex;align-items:center;gap:0;margin-right:12px;">
+        <div style="padding:4px 10px;background:var(--tag-bg);border:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--text-muted);" onclick="show('pe-form')" style="cursor:pointer;">① Base ✓</div>
+        <div style="padding:4px 10px;background:var(--tag-bg);border:1px solid var(--border);border-left:none;font-family:var(--mono);font-size:10px;color:var(--text-muted);" onclick="show('pe-retailer')" style="cursor:pointer;">② Retailers ✓</div>
+        <div style="padding:4px 10px;background:#1a1a1a;color:#fff;font-family:var(--mono);font-size:10px;font-weight:600;border:1px solid #1a1a1a;border-left:none;">③ Builder</div>
+      </div>
+      <button class="btn btn-g btn-sm" onclick="show('pe-retailer')">← Back</button>
+      <div class="av">SA</div>
+    </div>
   </div>
 
   <div class="bwrap">
@@ -724,37 +740,11 @@
       </div>
 
       <div class="bs">
-        <div class="bst">Product Details</div>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <input class="inp" style="font-size:11px;padding:5px 7px;" value="Husqvarna 22&quot; Mower" />
-          <input class="inp" style="font-size:11px;padding:5px 7px;" value="Husqvarna" placeholder="Manufacturer" />
-          <input class="inp" style="font-size:11px;padding:5px 7px;" value="LM-2200" placeholder="Model #" />
-          <input class="inp" style="font-size:11px;padding:5px 7px;" value="HV-LM-2200" placeholder="ID #" />
-          <input class="inp" style="font-size:11px;padding:5px 7px;" value="Outdoor Power" placeholder="Dept / Vendor" />
-          <textarea class="inp" rows="2" style="font-size:11px;padding:5px 7px;" placeholder="Description..."></textarea>
-          <label class="chkrow"><div class="chk on">✓</div><span style="font-size:11px;">Active</span></label>
-        </div>
+        <div class="bst">Product</div>
+        <div style="font-size:11px;font-weight:600;">Husqvarna 22" Mower</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-top:2px;">LM-2200 · Husqvarna</div>
+        <div style="margin-top:7px;"><span onclick="show('pe-form')" style="font-family:var(--mono);font-size:9px;color:var(--text-muted);cursor:pointer;text-decoration:underline;">← Edit product details</span></div>
       </div>
-
-      <div class="bs">
-        <div class="bst">Vendors</div>
-        <label class="chkrow"><div class="chk on">✓</div>Lowe's</label>
-        <label class="chkrow"><div class="chk on">✓</div>Home Depot</label>
-        <label class="chkrow"><div class="chk">✓</div>Bass Pro Shops</label>
-        <div style="display:flex;gap:5px;margin-top:7px;"><input class="inp" style="font-size:11px;padding:5px 7px;" placeholder="+ Custom vendor" /><button class="btn btn-sm">Add</button></div>
-      </div>
-
-      <div class="bs">
-        <div class="bst">Serial Numbers</div>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          <div style="font-size:10px;color:var(--text-muted);">Lowe's</div>
-          <input class="inp" style="font-size:11px;padding:5px 7px;" placeholder="Serial # for Lowe's" />
-          <div style="font-size:10px;color:var(--text-muted);margin-top:3px;">Home Depot</div>
-          <input class="inp" style="font-size:11px;padding:5px 7px;" placeholder="Serial # for Home Depot" />
-        </div>
-      </div>
-
-      <div class="bs"><div class="bst">Product Thumbnail</div><div class="iph" style="height:75px;margin-bottom:7px;font-size:9px;">[ PRODUCT IMAGE ]</div><button class="btn btn-g btn-sm" style="width:100%;justify-content:center;">↑ Upload Thumbnail</button></div>
 
       <div style="padding:12px;display:flex;flex-direction:column;gap:7px;">
         <button class="btn" style="justify-content:center;">Submit Product</button>
@@ -871,63 +861,217 @@
 
 
 <!-- ══════════════════════════════════════
-     12  PRODUCT ENTRY
+     12  PRODUCT ENTRY — STEP 1: BASE PRODUCT
 ══════════════════════════════════════ -->
 <div id="pe-form" class="screen">
   <div class="tnav">
-    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">SCHEMATIC ADMIN</div><div class="tlinks"><span onclick="show('sb-home')">Home</span><span onclick="show('sb-inventory')">Inventory</span><span class="on">Product Entry</span></div></div>
+    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">SCHEMATIC ADMIN</div><div class="tlinks"><span onclick="show('sb-home')">Home</span><span onclick="show('sb-inventory')">Inventory</span><span class="on">New Product</span></div></div>
     <div class="tright"><button class="btn btn-g btn-sm" onclick="show('sb-inventory')">← Cancel</button><div class="av">SA</div></div>
   </div>
   <div class="main">
-    <div class="ptitle">New Product Entry</div>
-    <div class="psub">Add a new product before building its schematic</div>
+    <!-- STEP INDICATOR -->
+    <div style="display:flex;align-items:center;gap:0;margin-bottom:24px;padding-top:10px;">
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 16px;background:#1a1a1a;color:#fff;font-family:var(--mono);font-size:11px;font-weight:600;">① Base Product</div>
+      <div style="width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:12px solid #1a1a1a;"></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 16px 7px 20px;background:var(--tag-bg);border:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--text-muted);">② Retailer Info</div>
+      <div style="width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:12px solid var(--border);margin-left:-1px;"></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 16px 7px 20px;background:var(--tag-bg);border:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--text-muted);">③ Schematic Builder</div>
+    </div>
+
+    <div class="ptitle">New Product — Base Info</div>
+    <div class="psub">Vendor and manufacturer details for this product</div>
+
     <div style="display:grid;grid-template-columns:1fr 270px;gap:22px;">
       <div>
+        <!-- VENDOR INFO -->
+        <div class="panel" style="margin-bottom:16px;">
+          <div class="phdr">Vendor / Manufacturer</div>
+          <div class="pbody">
+            <div class="frow">
+              <div class="fld">
+                <label class="lbl">Manufacturer Name <span style="color:var(--accent);">*</span></label>
+                <input class="inp" placeholder="e.g. Husqvarna" />
+              </div>
+              <div class="fld">
+                <label class="lbl">
+                  Vendor ID
+                  <span style="font-family:var(--mono);font-size:9px;background:#fef3e2;color:#92500a;border:1px solid #f6cc8a;padding:1px 5px;border-radius:3px;margin-left:5px;">⚠ Field TBD</span>
+                </label>
+                <input class="inp" placeholder="Identifier — confirm with vendor team" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT INFO -->
         <div class="panel" style="margin-bottom:16px;">
           <div class="phdr">Product Information</div>
           <div class="pbody">
-            <div class="fld"><label class="lbl">Product Name</label><input class="inp" placeholder='e.g. Husqvarna 22" Self-Propelled Mower' /></div>
-            <div class="frow"><div class="fld"><label class="lbl">Manufacturer</label><input class="inp" placeholder="Husqvarna" /></div><div class="fld"><label class="lbl">Model Number</label><input class="inp" placeholder="LM-2200" /></div></div>
-            <div class="frow"><div class="fld"><label class="lbl">ID Number</label><input class="inp" placeholder="HV-LM-2200" /></div><div class="fld"><label class="lbl">Department</label><input class="inp" placeholder="Outdoor Power" /></div></div>
-            <div class="fld"><label class="lbl">Description</label><textarea class="inp" rows="3" placeholder="Product description..."></textarea></div>
-            <label class="chkrow"><div class="chk on">✓</div><span style="font-size:12px;">Mark as Active</span></label>
-          </div>
-        </div>
-        <div class="panel" style="margin-bottom:16px;">
-          <div class="phdr">Category</div>
-          <div class="pbody">
+            <div class="fld"><label class="lbl">Product Name <span style="color:var(--accent);">*</span></label><input class="inp" placeholder='e.g. Husqvarna 22" Self-Propelled Mower' /></div>
             <div class="frow">
-              <div class="fld"><label class="lbl">Primary Category</label><select class="sel"><option>Grills & Outdoor Cooking</option><option>Plumbing</option><option>Outdoor Power</option><option>Heating & Cooling</option><option>Generators</option><option>Power Tools</option></select></div>
-              <div class="fld"><label class="lbl">Sub-Category</label><select class="sel"><option>Gas Grills</option><option>Charcoal Grills</option><option>Pellet Grills</option><option>Faucets</option><option>Toilets</option><option>Lawn Mowers</option></select></div>
+              <div class="fld"><label class="lbl">Model Number <span style="color:var(--accent);">*</span></label><input class="inp" placeholder="LM-2200" /></div>
+              <div class="fld"><label class="lbl">Primary Category <span style="color:var(--accent);">*</span></label><select class="sel"><option>Outdoor Power</option><option>Grills & Outdoor Cooking</option><option>Plumbing</option><option>Heating & Cooling</option><option>Generators</option><option>Power Tools</option></select></div>
             </div>
+            <div class="frow">
+              <div class="fld"><label class="lbl">Sub-Category</label><select class="sel"><option>Lawn Mowers</option><option>Gas Grills</option><option>Charcoal Grills</option><option>Faucets</option><option>Toilets</option></select></div>
+              <div class="fld" style="display:flex;align-items:flex-end;padding-bottom:2px;"><label class="chkrow" style="margin:0;"><div class="chk on">✓</div><span style="font-size:12px;">Mark as Active</span></label></div>
+            </div>
+            <div class="fld"><label class="lbl">Description</label><textarea class="inp" rows="3" placeholder="Product description visible to retailers..."></textarea></div>
           </div>
         </div>
+
+        <!-- SCHEMATIC IMAGES -->
         <div class="panel" style="margin-bottom:16px;">
-          <div class="phdr">Vendors & Serial Numbers</div>
+          <div class="phdr">Schematic Images</div>
           <div class="pbody">
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Select vendors this product is sold at</div>
-            <div style="display:flex;flex-direction:column;gap:9px;">
-              <div style="display:flex;align-items:center;gap:10px;"><label class="chkrow" style="width:125px;margin:0;"><div class="chk on">✓</div><span style="font-size:12px;">Lowe's</span></label><input class="inp" style="flex:1;" placeholder="Serial # for Lowe's" /></div>
-              <div style="display:flex;align-items:center;gap:10px;"><label class="chkrow" style="width:125px;margin:0;"><div class="chk on">✓</div><span style="font-size:12px;">Home Depot</span></label><input class="inp" style="flex:1;" placeholder="Serial # for Home Depot" /></div>
-              <div style="display:flex;align-items:center;gap:10px;"><label class="chkrow" style="width:125px;margin:0;"><div class="chk">✓</div><span style="font-size:12px;">Bass Pro Shops</span></label><input class="inp" style="flex:1;opacity:.5;" placeholder="Serial # for Bass Pro" disabled /></div>
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Upload the diagram images used to build schematics. One image per schematic page.</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:10px;background:var(--tag-bg);border:1px solid var(--border);padding:9px 12px;">
+                <div style="font-family:var(--mono);font-size:10px;font-weight:600;min-width:60px;">Page 1</div>
+                <div class="iph" style="flex:1;height:36px;font-size:9px;margin:0;">[ diagram-main-assembly.png ]</div>
+                <button class="btn btn-g btn-sm">Replace</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;background:var(--tag-bg);border:1px solid var(--border);padding:9px 12px;">
+                <div style="font-family:var(--mono);font-size:10px;font-weight:600;min-width:60px;">Page 2</div>
+                <div class="iph" style="flex:1;height:36px;font-size:9px;margin:0;">[ empty — no image ]</div>
+                <button class="btn btn-sm">↑ Upload</button>
+              </div>
+              <button class="btn btn-g btn-sm" style="align-self:flex-start;">+ Add Another Page</button>
             </div>
           </div>
         </div>
+
         <div style="display:flex;gap:9px;justify-content:flex-end;">
           <button class="btn btn-o" onclick="show('sb-inventory')">Cancel</button>
-          <button class="btn" onclick="show('sb-builder')">Save & Open Builder →</button>
+          <button class="btn" onclick="show('pe-retailer')">Save & Continue → Retailer Info</button>
         </div>
       </div>
+
+      <!-- SIDEBAR -->
       <div>
         <div class="panel" style="margin-bottom:14px;">
-          <div class="phdr">Product Thumbnail</div>
-          <div class="pbody"><div class="iph" style="height:150px;margin-bottom:10px;">[ UPLOAD IMAGE ]</div><button class="btn btn-g btn-sm" style="width:100%;justify-content:center;">↑ Upload Image</button></div>
+          <div class="phdr">Product Image</div>
+          <div class="pbody">
+            <div class="iph" style="height:150px;margin-bottom:10px;">[ UPLOAD PRODUCT PHOTO ]</div>
+            <button class="btn btn-g btn-sm" style="width:100%;justify-content:center;">↑ Upload Image</button>
+          </div>
         </div>
         <div class="panel">
-          <div class="phdr">Status Checklist</div>
+          <div class="phdr">Step 1 of 3</div>
           <div class="pbody">
-            <div style="font-size:12px;color:var(--text-muted);margin-bottom:11px;">After saving, Inventory will open and Builder will launch automatically.</div>
-            <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);line-height:2;">✓ Product Info<br>✓ Category<br>✓ Vendors<br>○ Schematic (after save)</div>
+            <div style="font-family:var(--mono);font-size:10px;line-height:2.2;color:var(--text-muted);">
+              <span style="color:var(--text);font-weight:600;">● Base Product</span><br/>
+              ○ Retailer Info<br/>
+              ○ Schematic Builder
+            </div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">Fill in vendor and product details, upload images, then move to retailer configuration.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     12B  PRODUCT ENTRY — STEP 2: RETAILER INFO
+══════════════════════════════════════ -->
+<div id="pe-retailer" class="screen">
+  <div class="tnav">
+    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">SCHEMATIC ADMIN</div><div class="tlinks"><span onclick="show('sb-home')">Home</span><span onclick="show('sb-inventory')">Inventory</span><span class="on">New Product</span></div></div>
+    <div class="tright"><button class="btn btn-g btn-sm" onclick="show('pe-form')">← Back</button><div class="av">SA</div></div>
+  </div>
+  <div class="main">
+    <!-- STEP INDICATOR -->
+    <div style="display:flex;align-items:center;gap:0;margin-bottom:24px;padding-top:10px;">
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 16px;background:var(--tag-bg);border:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--text-muted);">① Base Product ✓</div>
+      <div style="width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:12px solid var(--border);"></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 16px 7px 20px;background:#1a1a1a;color:#fff;font-family:var(--mono);font-size:11px;font-weight:600;">② Retailer Info</div>
+      <div style="width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:12px solid #1a1a1a;"></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 16px 7px 20px;background:var(--tag-bg);border:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--text-muted);">③ Schematic Builder</div>
+    </div>
+
+    <div class="ptitle">Retailer Info — Husqvarna LM-2200</div>
+    <div class="psub">Add retailer-specific details. Each retailer can have different SKUs, item numbers, and departments.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 270px;gap:22px;">
+      <div>
+
+        <!-- RETAILER BLOCK 1 — EXPANDED -->
+        <div class="panel" style="margin-bottom:12px;">
+          <div class="phdr" style="display:flex;justify-content:space-between;align-items:center;">
+            <span>Retailer 1</span>
+            <span style="font-size:10px;color:var(--text-muted);font-weight:400;">Required</span>
+          </div>
+          <div class="pbody">
+            <div class="fld" style="margin-bottom:12px;">
+              <label class="lbl">Retailer <span style="color:var(--accent);">*</span></label>
+              <select class="inp" style="width:100%;margin-top:4px;">
+                <option>— Select retailer —</option>
+                <option selected>Lowe's</option>
+                <option>Home Depot</option>
+                <option>Bass Pro Shops</option>
+              </select>
+            </div>
+            <div class="frow">
+              <div class="fld"><label class="lbl">Retailer SKU <span style="color:var(--accent);">*</span></label><input class="inp" placeholder="e.g. 123456" value="LW-52841" /></div>
+              <div class="fld"><label class="lbl">Internet / Item #</label><input class="inp" placeholder="e.g. 1000812345" value="1000812345" /></div>
+            </div>
+            <div class="frow">
+              <div class="fld"><label class="lbl">Department <span style="font-size:9px;color:var(--text-muted);">(retailer-defined)</span></label><input class="inp" placeholder="e.g. Outdoor Power" value="Outdoor Power" /></div>
+              <div class="fld" style="display:flex;align-items:flex-end;padding-bottom:2px;"><label class="chkrow" style="margin:0;"><div class="chk on">✓</div><span style="font-size:12px;">Active for this retailer</span></label></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RETAILER BLOCK 2 — COLLAPSED/SAVED -->
+        <div class="panel" style="margin-bottom:12px;">
+          <div class="pbody" style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span class="badge b-act">Active</span>
+              <div>
+                <div style="font-size:13px;font-weight:600;">Home Depot</div>
+                <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">SKU: HD-52910 · Item #: 1003291847 · Dept: Outdoor Power</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button class="btn btn-g btn-sm">Edit</button>
+              <button class="btn btn-d btn-sm">Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADD RETAILER BUTTON -->
+        <div style="border:2px dashed var(--border);padding:14px;text-align:center;margin-bottom:20px;cursor:pointer;background:var(--tag-bg);">
+          <span style="font-family:var(--mono);font-size:12px;color:var(--text-muted);">+ Add Another Retailer</span>
+        </div>
+
+        <div style="display:flex;gap:9px;justify-content:flex-end;">
+          <button class="btn btn-o" onclick="show('pe-form')">← Back</button>
+          <button class="btn" onclick="show('sb-builder')">Save & Continue → Schematic Builder</button>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <div class="panel" style="margin-bottom:14px;">
+          <div class="phdr">Product</div>
+          <div class="pbody">
+            <div class="iph" style="height:90px;font-size:9px;margin-bottom:10px;">[ PRODUCT IMAGE ]</div>
+            <div style="font-size:13px;font-weight:600;">Husqvarna 22" Mower</div>
+            <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-top:3px;">Model: LM-2200</div>
+            <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Mfr: Husqvarna</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="phdr">Step 2 of 3</div>
+          <div class="pbody">
+            <div style="font-family:var(--mono);font-size:10px;line-height:2.2;color:var(--text-muted);">
+              ○ Base Product ✓<br/>
+              <span style="color:var(--text);font-weight:600;">● Retailer Info</span><br/>
+              ○ Schematic Builder
+            </div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">Add one block per retailer. Completed blocks collapse. At least one retailer is required.</div>
           </div>
         </div>
       </div>
@@ -1066,71 +1210,159 @@
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 300px;gap:20px;">
+    <div style="display:grid;grid-template-columns:1fr 280px;gap:20px;">
       <div class="panel">
-        <div class="phdr">Order Detail — ORD-20482</div>
+        <div class="phdr" style="display:flex;justify-content:space-between;align-items:center;">
+          <span>Order Detail — ORD-20482</span>
+          <span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;font-weight:400;">New — 3 lines open</span>
+        </div>
         <div class="pbody">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+
+          <!-- ORDER HEADER — READ ONLY -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border);">
             <div>
               <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:3px;">Retailer / Store</div>
               <div style="font-size:13px;font-weight:600;">Lowe's — Store #0621</div>
-              <div style="font-size:11px;color:var(--text-muted);">4000 Buford Hwy NE, Atlanta, GA 30345</div>
+              <div style="font-size:11px;color:var(--text-muted);">Atlanta, GA 30345</div>
             </div>
             <div>
               <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:3px;">PO / Reference</div>
               <div style="font-size:13px;font-weight:600;">PO-2026-00821</div>
               <div style="font-size:11px;color:var(--text-muted);">Cost Center: 4410-OPE</div>
             </div>
+            <div>
+              <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:3px;">Order Date</div>
+              <div style="font-size:13px;font-weight:600;">Mar 13, 2026</div>
+              <div style="font-size:11px;color:var(--text-muted);font-style:italic;">Read-only — contact admin to modify</div>
+            </div>
           </div>
-          <table class="tbl" style="border:none;margin-bottom:14px;">
-            <thead><tr><th>Part #</th><th>Description</th><th>Qty</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr>
-                <td style="font-family:var(--mono);font-size:11px;">532130969</td>
-                <td>Blade Assembly, 22"</td>
-                <td style="font-family:var(--mono);text-align:center;">2</td>
-                <td><span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">Pending</span></td>
-              </tr>
-              <tr>
-                <td style="font-family:var(--mono);font-size:11px;">532174358</td>
-                <td>Drive Belt, Rear Wheel</td>
-                <td style="font-family:var(--mono);text-align:center;">1</td>
-                <td><span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">Pending</span></td>
-              </tr>
-              <tr>
-                <td style="font-family:var(--mono);font-size:11px;">532110452</td>
-                <td>Air Filter Cartridge</td>
-                <td style="font-family:var(--mono);text-align:center;">3</td>
-                <td><span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">Pending</span></td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="display:flex;gap:9px;justify-content:flex-end;">
-            <button class="btn btn-o">Mark Item Unavailable</button>
-            <button class="btn">Confirm & Mark Ready →</button>
+
+          <!-- LINE ITEM 1 — EXPANDED / IN PROGRESS -->
+          <div style="border:1px solid var(--border);border-radius:4px;margin-bottom:10px;">
+            <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 12px;gap:12px;background:var(--tag-bg);border-bottom:1px solid var(--border);">
+              <div style="display:flex;align-items:center;gap:14px;">
+                <div>
+                  <div style="font-family:var(--mono);font-size:11px;font-weight:600;">532130969</div>
+                  <div style="font-size:12px;">Blade Assembly, 22"</div>
+                </div>
+                <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">Qty: 2</div>
+              </div>
+              <select class="fsel" style="font-size:11px;padding:4px 8px;border-color:#0369a1;color:#0369a1;font-weight:600;">
+                <option>Pending</option>
+                <option selected>In Progress</option>
+                <option>Shipped</option>
+                <option>Will Not Ship</option>
+              </select>
+            </div>
+            <!-- LINE DETAIL -->
+            <div style="padding:12px;display:flex;flex-direction:column;gap:10px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div>
+                  <label class="lbl">Carrier</label>
+                  <select class="fsel" style="width:100%;margin-top:3px;"><option>UPS Ground</option><option>FedEx Ground</option><option>LTL Freight</option><option>Will Call</option></select>
+                </div>
+                <div>
+                  <label class="lbl">Tracking # <span style="font-size:9px;color:var(--text-muted);">(shown as link to retailer)</span></label>
+                  <input class="inp" style="width:100%;margin-top:3px;" placeholder="Enter tracking number" />
+                </div>
+              </div>
+              <!-- COMMENTS -->
+              <div>
+                <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:6px;">Comments <span style="font-weight:400;text-transform:none;">(visible to retailer)</span></div>
+                <div style="background:var(--surface);border:1px solid var(--border);padding:8px 10px;font-size:11px;margin-bottom:6px;">
+                  <span style="font-family:var(--mono);font-size:9px;color:var(--text-muted);">Mar 13 · You</span><br/>
+                  Item pulled and staged. Awaiting carrier pickup.
+                </div>
+                <div style="display:flex;gap:6px;">
+                  <input class="inp" style="flex:1;font-size:11px;" placeholder="Add a comment…" />
+                  <button class="btn btn-sm">Post</button>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- LINE ITEM 2 — PENDING, COLLAPSED -->
+          <div style="border:1px solid var(--border);border-radius:4px;margin-bottom:10px;">
+            <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 12px;gap:12px;">
+              <div style="display:flex;align-items:center;gap:14px;">
+                <div>
+                  <div style="font-family:var(--mono);font-size:11px;font-weight:600;">532174358</div>
+                  <div style="font-size:12px;">Drive Belt, Rear Wheel</div>
+                </div>
+                <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">Qty: 1</div>
+              </div>
+              <select class="fsel" style="font-size:11px;padding:4px 8px;">
+                <option selected>Pending</option>
+                <option>In Progress</option>
+                <option>Shipped</option>
+                <option>Will Not Ship</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- LINE ITEM 3 — SHIPPED, COLLAPSED -->
+          <div style="border:1px solid #bbf7d0;border-radius:4px;margin-bottom:10px;background:#f0fdf4;">
+            <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 12px;gap:12px;">
+              <div style="display:flex;align-items:center;gap:14px;">
+                <div>
+                  <div style="font-family:var(--mono);font-size:11px;font-weight:600;">532110452</div>
+                  <div style="font-size:12px;">Air Filter Cartridge</div>
+                </div>
+                <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">Qty: 3</div>
+                <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">UPS · <span style="color:#0369a1;text-decoration:underline;cursor:pointer;">1Z999AA10123456784</span></div>
+              </div>
+              <select class="fsel" style="font-size:11px;padding:4px 8px;border-color:#16a34a;color:#16a34a;font-weight:600;" disabled>
+                <option>Shipped</option>
+              </select>
+            </div>
+          </div>
+
         </div>
       </div>
+
+      <!-- SIDEBAR -->
       <div>
         <div class="panel" style="margin-bottom:14px;">
-          <div class="phdr">Fulfillment Notes</div>
+          <div class="phdr">Line Summary</div>
           <div class="pbody">
-            <textarea class="inp" style="width:100%;height:80px;resize:none;font-size:11px;" placeholder="Add note for this order (visible to admin)…"></textarea>
-            <button class="btn btn-g btn-sm" style="width:100%;justify-content:center;margin-top:8px;">Save Note</button>
+            <div style="display:flex;flex-direction:column;gap:7px;font-size:11px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-family:var(--mono);font-size:10px;">532130969</span>
+                <span class="badge" style="background:#e0f2fe;color:#0369a1;border-color:#bae6fd;">In Progress</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-family:var(--mono);font-size:10px;">532174358</span>
+                <span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">Pending</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-family:var(--mono);font-size:10px;">532110452</span>
+                <span class="badge b-act">Shipped</span>
+              </div>
+            </div>
+            <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--text-muted);">Order completes when all lines reach <strong>Shipped</strong> or <strong>WNS</strong>.</div>
           </div>
         </div>
-        <div class="panel">
-          <div class="phdr">Shipping Info</div>
+
+        <!-- PROCESSED ORDER EXAMPLE -->
+        <div class="panel" style="border-color:#16a34a;">
+          <div class="phdr" style="background:#f0fdf4;border-color:#bbf7d0;color:#166534;">ORD-20430 — Processed</div>
           <div class="pbody">
-            <div class="fld" style="margin-bottom:9px;">
-              <label class="lbl">Carrier</label>
-              <select class="fsel" style="width:100%;"><option>UPS Ground</option><option>FedEx Ground</option><option>LTL Freight</option><option>Will Call</option></select>
+            <div style="font-size:11px;color:#166534;font-weight:600;margin-bottom:8px;">All lines complete — order locked</div>
+            <div style="display:flex;flex-direction:column;gap:6px;font-size:11px;">
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-family:var(--mono);font-size:10px;">532130969</span>
+                <span class="badge b-act">Shipped</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-family:var(--mono);font-size:10px;">532174358</span>
+                <span class="badge" style="background:#f1f5f9;color:#64748b;border-color:#cbd5e1;">WNS</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-family:var(--mono);font-size:10px;">532110452</span>
+                <span class="badge b-act">Shipped</span>
+              </div>
             </div>
-            <div class="fld" style="margin-bottom:9px;">
-              <label class="lbl">Tracking #</label>
-              <input class="inp" style="width:100%;" placeholder="Enter tracking number" />
-            </div>
-            <button class="btn" style="width:100%;justify-content:center;">Mark as Shipped →</button>
+            <div style="margin-top:10px;font-size:10px;color:var(--text-muted);font-style:italic;">This order is immutable. No further changes allowed.</div>
           </div>
         </div>
       </div>
