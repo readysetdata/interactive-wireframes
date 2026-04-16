@@ -16,6 +16,9 @@
   <a onclick="show('product')">03·Product+Schematic</a>
   <a onclick="show('cart')">04·Cart</a>
   <a onclick="show('checkout')">05·Checkout</a>
+  <a onclick="show('forgot')">05b·Forgot Password</a>
+  <a onclick="show('retailer-orders')">05c·My Orders</a>
+  <a onclick="show('retailer-account')">05d·Account</a>
   <div class="pdiv"></div>
   <span class="ps">Internal Admin</span>
   <a onclick="show('account')">06·User Mgmt</a>
@@ -33,6 +36,8 @@
   <div class="pdiv"></div>
   <span class="ps">Vendor Portal</span>
   <a onclick="show('vendor-portal')">13·Vendor Orders</a>
+  <a onclick="show('vendor-forgot')">13b·Forgot Password</a>
+  <a onclick="show('vendor-account')">13c·Account</a>
 </nav>
 
 
@@ -45,7 +50,7 @@
       <div class="llogo">Parts Portal<span>Powered by Your Parts Solution · Lowe's</span></div>
       <div class="fld"><label class="lbl">Email Address</label><input class="inp" placeholder="you@email.com" /></div>
       <div class="fld"><label class="lbl">Password</label><input class="inp" type="password" placeholder="••••••••" /></div>
-      <div style="text-align:right;margin-bottom:14px;"><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);cursor:pointer;">Forgot password?</span></div>
+      <div style="text-align:right;margin-bottom:14px;"><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);cursor:pointer;" onclick="show('forgot')">Forgot password?</span></div>
       <button class="btn" style="width:100%;justify-content:center;" onclick="show('catalog')">Sign In →</button>
       <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);text-align:center;">
         <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">New customer? </span>
@@ -63,7 +68,7 @@
   <div class="tnav">
     <div style="display:flex;align-items:center;gap:22px;">
       <div class="tlogo">RETAILER PORTAL</div>
-      <div class="tlinks"><span class="on">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div>
+      <div class="tlinks"><span class="on">Browse</span><span onclick="show('retailer-orders')">My Orders</span><span onclick="show('retailer-account')">Account</span></div>
     </div>
     <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
   </div>
@@ -139,7 +144,7 @@
 ══════════════════════════════════════ -->
 <div id="product" class="screen">
   <div class="tnav">
-    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">RETAILER PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div></div>
+    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">RETAILER PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('retailer-orders')">My Orders</span><span onclick="show('retailer-account')">Account</span></div></div>
     <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
   </div>
   <div class="main">
@@ -195,7 +200,7 @@
 ══════════════════════════════════════ -->
 <div id="cart" class="screen">
   <div class="tnav">
-    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">RETAILER PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div></div>
+    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">RETAILER PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('retailer-orders')">My Orders</span><span onclick="show('retailer-account')">Account</span></div></div>
     <div class="tright"><span style="font-family:var(--mono);font-size:11px;font-weight:600;">Cart (3)</span><div class="av">JD</div></div>
   </div>
   <div class="main">
@@ -255,7 +260,7 @@
 ══════════════════════════════════════ -->
 <div id="checkout" class="screen">
   <div class="tnav">
-    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">RETAILER PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('orders')">My Orders</span><span onclick="show('account')">Account</span></div></div>
+    <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">RETAILER PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('retailer-orders')">My Orders</span><span onclick="show('retailer-account')">Account</span></div></div>
     <div class="tright"><div class="av">JD</div></div>
   </div>
   <div class="main">
@@ -1090,7 +1095,7 @@
       <div class="tlogo">VENDOR PORTAL</div>
       <div class="tlinks">
         <span class="on">Orders</span>
-        <span>Account</span>
+        <span onclick="show('vendor-account')">Account</span>
       </div>
     </div>
     <div class="tright"><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Husqvarna North America</span><div class="av">HV</div></div>
@@ -1365,6 +1370,265 @@
             <div style="margin-top:10px;font-size:10px;color:var(--text-muted);font-style:italic;">This order is immutable. No further changes allowed.</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     05b  RETAILER FORGOT PASSWORD
+══════════════════════════════════════ -->
+<div id="forgot" class="screen">
+  <div class="lwrap">
+    <div class="lbox">
+      <div class="llogo">Parts Portal<span>Powered by Your Parts Solution · Lowe's</span></div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:16px;">Enter your email and we'll send reset instructions.</div>
+      <div class="fld"><label class="lbl">Email Address</label><input class="inp" placeholder="you@email.com" /></div>
+      <button class="btn" style="width:100%;justify-content:center;">Send Reset Instructions →</button>
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);text-align:center;">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);cursor:pointer;" onclick="show('login')">← Back to Sign In</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     05c  RETAILER MY ORDERS
+══════════════════════════════════════ -->
+<div id="retailer-orders" class="screen">
+  <div class="tnav">
+    <div style="display:flex;align-items:center;gap:22px;">
+      <div class="tlogo">RETAILER PORTAL</div>
+      <div class="tlinks"><span onclick="show('catalog')">Browse</span><span class="on">My Orders</span><span onclick="show('retailer-account')">Account</span></div>
+    </div>
+    <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
+  </div>
+  <div class="main">
+    <div class="ptitle">My Orders</div>
+    <div class="psub">Track and review your submitted parts orders</div>
+
+    <div class="stats" style="grid-template-columns:repeat(4,1fr);margin-bottom:22px;">
+      <div class="stat"><div class="slbl">Total Orders</div><div class="sval">14</div></div>
+      <div class="stat"><div class="slbl">In Progress</div><div class="sval">3</div></div>
+      <div class="stat"><div class="slbl">Shipped</div><div class="sval">9</div></div>
+      <div class="stat"><div class="slbl">Will Not Ship</div><div class="sval">2</div></div>
+    </div>
+
+    <div class="filters" style="margin-bottom:14px;">
+      <input class="inp" style="width:200px;" placeholder="Search order #, part #..." />
+      <select class="fsel"><option>All Statuses</option><option>In Progress</option><option>Shipped</option><option>Will Not Ship</option></select>
+      <input class="inp" placeholder="From date" style="width:120px;" />
+      <input class="inp" placeholder="To date" style="width:120px;" />
+      <button class="btn btn-o">Filter</button>
+    </div>
+
+    <!-- ORDER 1 — IN PROGRESS -->
+    <div class="panel" style="margin-bottom:14px;">
+      <div class="phdr" style="display:flex;justify-content:space-between;align-items:center;">
+        <span>ORD-20441 · Lowe's #0621 · Apr 10, 2026</span>
+        <span class="badge" style="background:#e0f2fe;color:#0369a1;border-color:#bae6fd;">In Progress</span>
+      </div>
+      <div class="pbody">
+        <table class="tbl" style="border:none;">
+          <thead><tr><th>Part #</th><th>Description</th><th>Qty</th><th>Status</th><th>Tracking</th></tr></thead>
+          <tbody>
+            <tr>
+              <td style="font-family:var(--mono);font-size:10px;">532130969</td>
+              <td>Blade Assembly, 22"</td>
+              <td style="font-family:var(--mono);">×1</td>
+              <td><span class="badge" style="background:#e0f2fe;color:#0369a1;border-color:#bae6fd;">In Progress</span></td>
+              <td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">—</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:10px;">532174358</td>
+              <td>Drive Belt, Rear Wheel</td>
+              <td style="font-family:var(--mono);">×2</td>
+              <td><span class="badge" style="background:#fef3e2;color:#92500a;border-color:#f6cc8a;">Pending</span></td>
+              <td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">—</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:10px;">532110452</td>
+              <td>Air Filter Cartridge</td>
+              <td style="font-family:var(--mono);">×4</td>
+              <td><span class="badge b-act">Shipped</span></td>
+              <td style="font-family:var(--mono);font-size:10px;color:#0369a1;text-decoration:underline;cursor:pointer;">1Z999AA10123456784</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ORDER 2 — PROCESSED -->
+    <div class="panel" style="margin-bottom:14px;border-color:#16a34a;">
+      <div class="phdr" style="display:flex;justify-content:space-between;align-items:center;background:#f0fdf4;border-color:#bbf7d0;color:#166534;">
+        <span>ORD-20430 · Lowe's #0621 · Mar 28, 2026</span>
+        <span class="badge" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0;">Processed</span>
+      </div>
+      <div class="pbody">
+        <table class="tbl" style="border:none;">
+          <thead><tr><th>Part #</th><th>Description</th><th>Qty</th><th>Status</th><th>Tracking</th></tr></thead>
+          <tbody>
+            <tr>
+              <td style="font-family:var(--mono);font-size:10px;">531300403</td>
+              <td>Spark Plug NGK CMR6H</td>
+              <td style="font-family:var(--mono);">×2</td>
+              <td><span class="badge b-act">Shipped</span></td>
+              <td style="font-family:var(--mono);font-size:10px;color:#0369a1;text-decoration:underline;cursor:pointer;">1Z999AA10123456780</td>
+            </tr>
+            <tr>
+              <td style="font-family:var(--mono);font-size:10px;">532193197</td>
+              <td>Wheel Assembly, Front</td>
+              <td style="font-family:var(--mono);">×1</td>
+              <td><span class="badge" style="background:#f1f5f9;color:#64748b;border-color:#cbd5e1;">WNS</span></td>
+              <td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="pager"><div class="pgbtn on">1</div><div class="pgbtn">2</div><div class="pgbtn" style="width:auto;padding:0 10px;">Next →</div></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     05d  RETAILER ACCOUNT
+══════════════════════════════════════ -->
+<div id="retailer-account" class="screen">
+  <div class="tnav">
+    <div style="display:flex;align-items:center;gap:22px;">
+      <div class="tlogo">RETAILER PORTAL</div>
+      <div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('retailer-orders')">My Orders</span><span class="on">Account</span></div>
+    </div>
+    <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
+  </div>
+  <div class="main">
+    <div class="ptitle">My Account</div>
+    <div class="psub">Manage your profile and security settings</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:18px;">
+      <!-- PROFILE -->
+      <div class="panel">
+        <div class="phdr">Profile</div>
+        <div class="pbody">
+          <div class="fld"><label class="lbl">First Name</label><input class="inp" value="Jane" /></div>
+          <div class="fld"><label class="lbl">Last Name</label><input class="inp" value="Doe" /></div>
+          <div class="fld"><label class="lbl">Email Address</label><input class="inp" value="jane.doe@lowes.com" /></div>
+          <div class="fld"><label class="lbl">Phone</label><input class="inp" value="(404) 555-0100" /></div>
+          <div style="margin-top:14px;"><button class="btn">Save Changes →</button></div>
+        </div>
+      </div>
+      <!-- SECURITY -->
+      <div class="panel">
+        <div class="phdr">Security</div>
+        <div class="pbody">
+          <div class="fld"><label class="lbl">Current Password</label><input class="inp" type="password" placeholder="••••••••" /></div>
+          <div class="fld"><label class="lbl">New Password</label><input class="inp" type="password" placeholder="••••••••" /></div>
+          <div class="fld"><label class="lbl">Confirm New Password</label><input class="inp" type="password" placeholder="••••••••" /></div>
+          <div style="margin-top:14px;"><button class="btn">Update Password →</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RETAILER ASSIGNMENT -->
+    <div class="panel">
+      <div class="phdr">Retailer Assignment</div>
+      <div class="pbody">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">Retailer</div>
+            <div style="font-size:13px;font-weight:600;">Lowe's</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">Store</div>
+            <div style="font-size:13px;font-weight:600;">Store #0621 · Atlanta, GA</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Retailer assignment is managed by your administrator. Contact support to request changes.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     13b  VENDOR FORGOT PASSWORD
+══════════════════════════════════════ -->
+<div id="vendor-forgot" class="screen">
+  <div class="lwrap">
+    <div class="lbox">
+      <div class="llogo">Parts Portal<span>Powered by Your Parts Solution · Vendor Portal</span></div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:16px;">Enter your email and we'll send reset instructions.</div>
+      <div class="fld"><label class="lbl">Email Address</label><input class="inp" placeholder="you@vendor.com" /></div>
+      <button class="btn" style="width:100%;justify-content:center;">Send Reset Instructions →</button>
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);text-align:center;">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);cursor:pointer;" onclick="show('vendor-portal')">← Back to Sign In</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     13c  VENDOR ACCOUNT
+══════════════════════════════════════ -->
+<div id="vendor-account" class="screen">
+  <div class="tnav">
+    <div style="display:flex;align-items:center;gap:22px;">
+      <div class="tlogo">VENDOR PORTAL</div>
+      <div class="tlinks">
+        <span onclick="show('vendor-portal')">Orders</span>
+        <span class="on">Account</span>
+      </div>
+    </div>
+    <div class="tright"><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Husqvarna North America</span><div class="av">HV</div></div>
+  </div>
+  <div class="main">
+    <div class="ptitle">My Account</div>
+    <div class="psub">Manage your profile and security settings</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:18px;">
+      <!-- PROFILE -->
+      <div class="panel">
+        <div class="phdr">Profile</div>
+        <div class="pbody">
+          <div class="fld"><label class="lbl">First Name</label><input class="inp" value="Rita" /></div>
+          <div class="fld"><label class="lbl">Last Name</label><input class="inp" value="Solano" /></div>
+          <div class="fld"><label class="lbl">Email Address</label><input class="inp" value="rsolano@husqvarna.com" /></div>
+          <div class="fld"><label class="lbl">Phone</label><input class="inp" value="(612) 555-0188" /></div>
+          <div style="margin-top:14px;"><button class="btn">Save Changes →</button></div>
+        </div>
+      </div>
+      <!-- SECURITY -->
+      <div class="panel">
+        <div class="phdr">Security</div>
+        <div class="pbody">
+          <div class="fld"><label class="lbl">Current Password</label><input class="inp" type="password" placeholder="••••••••" /></div>
+          <div class="fld"><label class="lbl">New Password</label><input class="inp" type="password" placeholder="••••••••" /></div>
+          <div class="fld"><label class="lbl">Confirm New Password</label><input class="inp" type="password" placeholder="••••••••" /></div>
+          <div style="margin-top:14px;"><button class="btn">Update Password →</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VENDOR INFO -->
+    <div class="panel">
+      <div class="phdr">Vendor Information</div>
+      <div class="pbody">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">Vendor Name</div>
+            <div style="font-size:13px;font-weight:600;">Husqvarna North America</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">Vendor ID</div>
+            <div style="font-size:13px;font-weight:600;font-family:var(--mono);">VND-0042</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Vendor information is managed by your administrator. Contact support to request changes.</div>
       </div>
     </div>
   </div>

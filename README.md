@@ -12,6 +12,9 @@ Interactive wireframe prototype for the ReadySetData platform — covering the r
 | 03 | Product Detail + Schematic | Done |
 | 04 | Cart | Done |
 | 05 | Checkout (store/retailer-focused) | Done |
+| 05b | Forgot Password | Done |
+| 05c | My Orders | Done |
+| 05d | Account / Profile | Done |
 
 ### Internal Admin
 | # | Screen | Status |
@@ -32,6 +35,8 @@ Interactive wireframe prototype for the ReadySetData platform — covering the r
 | # | Screen | Status |
 |---|--------|--------|
 | 13 | Vendor Portal — Orders & Fulfillment | Done |
+| 13b | Vendor Forgot Password | Done |
+| 13c | Vendor Account / Profile | Done |
 
 ## Future / Out of Scope
 
