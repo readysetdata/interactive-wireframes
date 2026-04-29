@@ -1,5 +1,19 @@
-  function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.proto-nav a').forEach(a=>a.classList.remove('active'));window.scrollTo(0,0);closePartPopup();}
+  function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.proto-nav a').forEach(a=>a.classList.remove('active'));window.scrollTo(0,0);closePartPopup();if(id==='forgot')setResetState('forgot',false);if(id==='vendor-forgot')setResetState('vendor-forgot',false);}
   function tog(id){document.getElementById(id).classList.toggle('open')}
+  function setResetState(prefix, confirmed) {
+    document.getElementById(prefix + '-form-state').style.display = confirmed ? 'none' : 'block';
+    document.getElementById(prefix + '-confirm-state').style.display = confirmed ? 'block' : 'none';
+  }
+  function setViewer(group, targetId, el) {
+    document.querySelectorAll('[data-view-group="' + group + '"]').forEach(function(view) {
+      view.style.display = view.id === targetId ? 'block' : 'none';
+    });
+    document.querySelectorAll('[data-thumb-group="' + group + '"]').forEach(function(thumb) {
+      thumb.classList.remove('active');
+    });
+    if (el) el.classList.add('active');
+    closePartPopup();
+  }
 
   function showPartPopup(el, partNum, partName, max) {
     closePartPopup();
