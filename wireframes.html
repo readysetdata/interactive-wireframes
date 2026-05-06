@@ -1216,14 +1216,17 @@
       <div class="phdr">Order Queue</div>
       <div class="pbody" style="padding-bottom:0;">
         <div class="filter-row" style="margin-bottom:16px;">
-          <div class="filter-block" style="min-width:200px;">
+          <div class="filter-block" style="min-width:380px;">
             <label class="lbl">Line Item Status</label>
-            <select class="fsel" style="width:100%;">
-              <option>Pending</option>
-              <option>Processing</option>
-              <option>Shipped</option>
-              <option>WNS</option>
-            </select>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:2px;">
+              <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" class="vendor-status-filter" /> Pending</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" class="vendor-status-filter" /> Processing</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" class="vendor-status-filter" /> Shipped</label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" class="vendor-status-filter" /> WNS</label>
+            </div>
+            <div style="margin-top:8px;">
+              <button class="btn btn-o btn-sm" onclick="document.querySelectorAll('.vendor-status-filter').forEach(function(cb){cb.checked=false;})">Clear Filters</button>
+            </div>
           </div>
           <div class="filter-block" style="min-width:240px;">
             <label class="lbl">Search</label>
@@ -1252,7 +1255,40 @@
               <td style="font-family:var(--mono);font-size:11px;">3 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 13, 2026</td>
               <td><span class="badge badge-pending">Pending</span></td>
-              <td><button class="btn btn-sm">View →</button></td>
+              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20482')">Expand Order</button></td>
+            </tr>
+            <tr id="vendor-order-20482" class="exprow">
+              <td colspan="7">
+                <div class="expcontent">
+                  <div style="display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+                    <div><div class="lbl">Retailer / Store</div><div style="font-size:13px;font-weight:600;">Lowe's — Store #0621</div></div>
+                    <div><div class="lbl">Ship To</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">4000 Buford Hwy NE<br/>Atlanta, GA 30345</div></div>
+                    <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">Jane Doe<br/>jane.doe@lowes.com<br/>(404) 555-0100 x4</div></div>
+                    <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">UPS Ground<br/>Dock hours: 7am–3pm<br/>PO-2026-00821</div></div>
+                  </div>
+                  <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Update each line item individually. Complete the order when every line reaches <strong>Shipped</strong> or <strong>WNS</strong>.</div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20482', this.checked)" /> All items same tracking</label>
+                    <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
+                      <label class="lbl">Shared Tracking Number</label>
+                      <input class="inp" style="font-size:11px;" value="1Z999AA10123456784" />
+                    </div>
+                  </div>
+                  <table class="tbl" style="border:none;">
+                    <thead><tr><th>Part Number</th><th>Description</th><th>Quantity</th><th>Line Item Status</th><th>Tracking</th></tr></thead>
+                    <tbody>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532130969</td><td>Blade Assembly, 22"</td><td style="font-family:var(--mono);">2</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option selected>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532174358</td><td>Drive Belt, Rear Wheel</td><td style="font-family:var(--mono);">1</td><td><select class="fsel" style="width:100%;"><option selected>Pending</option><option>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532110452</td><td>Air Filter Cartridge</td><td style="font-family:var(--mono);">3</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option>Processing</option><option selected>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="1Z999AA10123456784" /></td></tr>
+                    </tbody>
+                  </table>
+                  <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+                    <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Pulled two lines, third in progress" /></div>
+                    <button class="btn btn-o btn-sm">Save Progress</button>
+                    <button class="btn btn-sm">Complete Order</button>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr style="border-left:3px solid #dc2626;">
               <td style="font-family:var(--mono);font-size:11px;font-weight:600;color:#dc2626;">ORD-20479</td>
@@ -1261,7 +1297,40 @@
               <td style="font-family:var(--mono);font-size:11px;">7 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 13, 2026</td>
               <td><span class="badge badge-processing">Processing</span></td>
-              <td><button class="btn btn-sm">View →</button></td>
+              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20479')">Expand Order</button></td>
+            </tr>
+            <tr id="vendor-order-20479" class="exprow">
+              <td colspan="7">
+                <div class="expcontent">
+                  <div style="display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+                    <div><div class="lbl">Retailer / Store</div><div style="font-size:13px;font-weight:600;">Lowe's — Store #1142</div></div>
+                    <div><div class="lbl">Ship To</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">8111 South Tryon St<br/>Charlotte, NC 28273</div></div>
+                    <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">Mark Ellis<br/>mark.ellis@lowes.com<br/>(704) 555-0112 x9</div></div>
+                    <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">FedEx Ground<br/>Receiving: 8am–4pm<br/>PO-2026-00819</div></div>
+                  </div>
+                  <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Use shared tracking if this shipment leaves under one label, or enter tracking separately by line item.</div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20479', this.checked)" /> All items same tracking</label>
+                    <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
+                      <label class="lbl">Shared Tracking Number</label>
+                      <input class="inp" style="font-size:11px;" value="" />
+                    </div>
+                  </div>
+                  <table class="tbl" style="border:none;">
+                    <thead><tr><th>Part Number</th><th>Description</th><th>Quantity</th><th>Line Item Status</th><th>Tracking</th></tr></thead>
+                    <tbody>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532130973</td><td>Control Cable Kit</td><td style="font-family:var(--mono);">2</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option selected>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532171008</td><td>Wheel Hub Cap</td><td style="font-family:var(--mono);">4</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option>Processing</option><option selected>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="781459220145" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532181441</td><td>Throttle Lever</td><td style="font-family:var(--mono);">1</td><td><select class="fsel" style="width:100%;"><option selected>Pending</option><option>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                    </tbody>
+                  </table>
+                  <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+                    <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Awaiting final throttle lever pick" /></div>
+                    <button class="btn btn-o btn-sm">Save Progress</button>
+                    <button class="btn btn-sm">Complete Order</button>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr style="border-left:3px solid #dc2626;">
               <td style="font-family:var(--mono);font-size:11px;font-weight:600;color:#dc2626;">ORD-20471</td>
@@ -1270,7 +1339,40 @@
               <td style="font-family:var(--mono);font-size:11px;">2 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 12, 2026</td>
               <td><span class="badge badge-pending">Pending</span></td>
-              <td><button class="btn btn-sm">View →</button></td>
+              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20471')">Expand Order</button></td>
+            </tr>
+            <tr id="vendor-order-20471" class="exprow">
+              <td colspan="7">
+                <div class="expcontent">
+                  <div style="display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+                    <div><div class="lbl">Retailer / Store</div><div style="font-size:13px;font-weight:600;">Home Depot — Store #4502</div></div>
+                    <div><div class="lbl">Ship To</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">2531 Powell Ave<br/>Nashville, TN 37204</div></div>
+                    <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">Erin Chase<br/>erin.chase@homedepot.com<br/>(615) 555-0141</div></div>
+                    <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">UPS Ground<br/>Receiving gate B<br/>PO-2026-00798</div></div>
+                  </div>
+                  <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Mark any unavailable parts as <strong>WNS</strong> and complete the order when all lines have final statuses.</div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20471', this.checked)" /> All items same tracking</label>
+                    <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
+                      <label class="lbl">Shared Tracking Number</label>
+                      <input class="inp" style="font-size:11px;" value="" />
+                    </div>
+                  </div>
+                  <table class="tbl" style="border:none;">
+                    <thead><tr><th>Part Number</th><th>Description</th><th>Quantity</th><th>Line Item Status</th><th>Tracking</th></tr></thead>
+                    <tbody>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532193214</td><td>Deck Wash Port</td><td style="font-family:var(--mono);">1</td><td><select class="fsel" style="width:100%;"><option selected>Pending</option><option>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532193221</td><td>Starter Handle</td><td style="font-family:var(--mono);">2</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option selected>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532193227</td><td>Fuel Cap</td><td style="font-family:var(--mono);">1</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option>Processing</option><option>Shipped</option><option selected>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                    </tbody>
+                  </table>
+                  <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+                    <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Fuel cap unavailable, partial fulfillment ready" /></div>
+                    <button class="btn btn-o btn-sm">Save Progress</button>
+                    <button class="btn btn-sm">Complete Order</button>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr style="border-left:3px solid #d1d5db;">
               <td style="font-family:var(--mono);font-size:11px;font-weight:600;color:#111;">ORD-20465</td>
@@ -1279,7 +1381,39 @@
               <td style="font-family:var(--mono);font-size:11px;">5 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 11, 2026</td>
               <td><span class="badge badge-processing">Processing</span></td>
-              <td><button class="btn btn-sm">View →</button></td>
+              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20465')">Expand Order</button></td>
+            </tr>
+            <tr id="vendor-order-20465" class="exprow">
+              <td colspan="7">
+                <div class="expcontent">
+                  <div style="display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+                    <div><div class="lbl">Retailer / Store</div><div style="font-size:13px;font-weight:600;">Lowe's — Store #0318</div></div>
+                    <div><div class="lbl">Ship To</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">5855 Ridgeway Center Pkwy<br/>Memphis, TN 38120</div></div>
+                    <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">Carla James<br/>carla.james@lowes.com<br/>(901) 555-0198 x2</div></div>
+                    <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">LTL Freight<br/>Dock hours: 6am–2pm<br/>PO-2026-00777</div></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20465', this.checked)" /> All items same tracking</label>
+                    <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
+                      <label class="lbl">Shared Tracking Number</label>
+                      <input class="inp" style="font-size:11px;" value="" />
+                    </div>
+                  </div>
+                  <table class="tbl" style="border:none;">
+                    <thead><tr><th>Part Number</th><th>Description</th><th>Quantity</th><th>Line Item Status</th><th>Tracking</th></tr></thead>
+                    <tbody>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532200145</td><td>Transmission Pulley</td><td style="font-family:var(--mono);">1</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option selected>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532200150</td><td>Rear Shield</td><td style="font-family:var(--mono);">2</td><td><select class="fsel" style="width:100%;"><option selected>Pending</option><option>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532200166</td><td>Mounting Bolt Kit</td><td style="font-family:var(--mono);">2</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option>Processing</option><option selected>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="9405511206213566098124" /></td></tr>
+                    </tbody>
+                  </table>
+                  <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+                    <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Shield backordered, remaining lines ready" /></div>
+                    <button class="btn btn-o btn-sm">Save Progress</button>
+                    <button class="btn btn-sm">Complete Order</button>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr style="border-left:3px solid #d1d5db;">
               <td style="font-family:var(--mono);font-size:11px;font-weight:600;color:#111;">ORD-20458</td>
@@ -1288,7 +1422,39 @@
               <td style="font-family:var(--mono);font-size:11px;">11 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 10, 2026</td>
               <td><span class="badge badge-wns">WNS</span></td>
-              <td><button class="btn btn-sm">View →</button></td>
+              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20458')">Expand Order</button></td>
+            </tr>
+            <tr id="vendor-order-20458" class="exprow">
+              <td colspan="7">
+                <div class="expcontent">
+                  <div style="display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+                    <div><div class="lbl">Retailer / Store</div><div style="font-size:13px;font-weight:600;">Bass Pro Shops — Store #0090</div></div>
+                    <div><div class="lbl">Ship To</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">1935 South Campbell Ave<br/>Springfield, MO 65807</div></div>
+                    <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">Nolan Reed<br/>nolan.reed@basspro.com<br/>(417) 555-0170</div></div>
+                    <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">UPS Ground<br/>Outdoor receiving bay<br/>PO-2026-00752</div></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20458', this.checked)" /> All items same tracking</label>
+                    <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
+                      <label class="lbl">Shared Tracking Number</label>
+                      <input class="inp" style="font-size:11px;" value="" />
+                    </div>
+                  </div>
+                  <table class="tbl" style="border:none;">
+                    <thead><tr><th>Part Number</th><th>Description</th><th>Quantity</th><th>Line Item Status</th><th>Tracking</th></tr></thead>
+                    <tbody>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532212003</td><td>Engine Gasket Set</td><td style="font-family:var(--mono);">5</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option>Processing</option><option>Shipped</option><option selected>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532212019</td><td>Primer Bulb</td><td style="font-family:var(--mono);">3</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option selected>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532212031</td><td>Ignition Coil</td><td style="font-family:var(--mono);">3</td><td><select class="fsel" style="width:100%;"><option selected>Pending</option><option>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                    </tbody>
+                  </table>
+                  <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+                    <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Gasket set unavailable, remaining lines in queue" /></div>
+                    <button class="btn btn-o btn-sm">Save Progress</button>
+                    <button class="btn btn-sm">Complete Order</button>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr style="border-left:3px solid #d1d5db;">
               <td style="font-family:var(--mono);font-size:11px;font-weight:600;color:#111;">ORD-20441</td>
@@ -1297,7 +1463,39 @@
               <td style="font-family:var(--mono);font-size:11px;">4 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 9, 2026</td>
               <td><span class="badge badge-processing">Processing</span></td>
-              <td><button class="btn btn-sm">View →</button></td>
+              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20441')">Expand Order</button></td>
+            </tr>
+            <tr id="vendor-order-20441" class="exprow">
+              <td colspan="7">
+                <div class="expcontent">
+                  <div style="display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+                    <div><div class="lbl">Retailer / Store</div><div style="font-size:13px;font-weight:600;">Home Depot — Store #6218</div></div>
+                    <div><div class="lbl">Ship To</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">1600 Montclair Rd<br/>Birmingham, AL 35210</div></div>
+                    <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">Tia Morris<br/>tia.morris@homedepot.com<br/>(205) 555-0168</div></div>
+                    <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">UPS Ground<br/>Receiving 9am–5pm<br/>PO-2026-00734</div></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20441', this.checked)" /> All items same tracking</label>
+                    <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
+                      <label class="lbl">Shared Tracking Number</label>
+                      <input class="inp" style="font-size:11px;" value="" />
+                    </div>
+                  </div>
+                  <table class="tbl" style="border:none;">
+                    <thead><tr><th>Part Number</th><th>Description</th><th>Quantity</th><th>Line Item Status</th><th>Tracking</th></tr></thead>
+                    <tbody>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532221108</td><td>Height Adjuster Plate</td><td style="font-family:var(--mono);">1</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option selected>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532221113</td><td>Axle Bushing</td><td style="font-family:var(--mono);">2</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option>Processing</option><option selected>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="1Z999AA10123666210" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532221129</td><td>Return Spring</td><td style="font-family:var(--mono);">1</td><td><select class="fsel" style="width:100%;"><option selected>Pending</option><option>Processing</option><option>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                    </tbody>
+                  </table>
+                  <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+                    <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Spring still pending, shipped remaining lines" /></div>
+                    <button class="btn btn-o btn-sm">Save Progress</button>
+                    <button class="btn btn-sm">Complete Order</button>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr style="border-left:3px solid #16a34a;">
               <td style="font-family:var(--mono);font-size:11px;font-weight:600;color:#16a34a;">ORD-20430</td>
@@ -1306,170 +1504,48 @@
               <td style="font-family:var(--mono);font-size:11px;">6 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 8, 2026</td>
               <td><span class="badge badge-shipped">Shipped</span></td>
-              <td><button class="btn btn-g btn-sm">View →</button></td>
+              <td><button class="btn btn-g btn-sm" onclick="toggleVendorOrder('vendor-order-20430')">Expand Order</button></td>
+            </tr>
+            <tr id="vendor-order-20430" class="exprow">
+              <td colspan="7">
+                <div class="expcontent">
+                  <div style="display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+                    <div><div class="lbl">Retailer / Store</div><div style="font-size:13px;font-weight:600;">Lowe's — Store #2211</div></div>
+                    <div><div class="lbl">Ship To</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">2248 Chapman Hwy<br/>Knoxville, TN 37920</div></div>
+                    <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">David Park<br/>david.park@lowes.com<br/>(865) 555-0135 x6</div></div>
+                    <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">UPS Ground<br/>Receiving: 7am–2pm<br/>PO-2026-00701</div></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20430', this.checked)" /> All items same tracking</label>
+                    <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
+                      <label class="lbl">Shared Tracking Number</label>
+                      <input class="inp" style="font-size:11px;" value="1Z999AA10123999001" />
+                    </div>
+                  </div>
+                  <table class="tbl" style="border:none;">
+                    <thead><tr><th>Part Number</th><th>Description</th><th>Quantity</th><th>Line Item Status</th><th>Tracking</th></tr></thead>
+                    <tbody>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532230012</td><td>Mulch Plug</td><td style="font-family:var(--mono);">2</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option>Processing</option><option selected>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="1Z999AA10123999001" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532230025</td><td>Wheel Assembly, Front</td><td style="font-family:var(--mono);">2</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option>Processing</option><option>Shipped</option><option selected>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="" /></td></tr>
+                      <tr><td style="font-family:var(--mono);font-size:10px;">532230039</td><td>Control Bracket</td><td style="font-family:var(--mono);">2</td><td><select class="fsel" style="width:100%;"><option>Pending</option><option>Processing</option><option selected>Shipped</option><option>WNS</option></select></td><td><input class="inp vendor-line-tracking" style="font-size:11px;" value="1Z999AA10123999001" /></td></tr>
+                    </tbody>
+                  </table>
+                  <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+                    <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Order complete, carrier pickup confirmed" /></div>
+                    <button class="btn btn-o btn-sm">Save Progress</button>
+                    <button class="btn btn-sm">Complete Order</button>
+                  </div>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 280px;gap:20px;">
-      <div class="panel">
-        <div class="phdr" style="display:flex;justify-content:space-between;align-items:center;">
-          <span>Order Detail — ORD-20482</span>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span class="badge badge-pending">Pending</span>
-            <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">3 line items open</span>
-          </div>
-        </div>
-        <div class="pbody">
-
-          <!-- ORDER HEADER — READ ONLY -->
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border);">
-            <div>
-              <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:3px;">Retailer / Store</div>
-              <div style="font-size:13px;font-weight:600;">Lowe's — Store #0621</div>
-              <div style="font-size:11px;color:var(--text-muted);">Atlanta, GA 30345</div>
-            </div>
-            <div>
-              <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:3px;">PO / Reference</div>
-              <div style="font-size:13px;font-weight:600;">PO-2026-00821</div>
-              <div style="font-size:11px;color:var(--text-muted);">Cost Center: 4410-OPE</div>
-            </div>
-            <div>
-              <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:3px;">Order Date</div>
-              <div style="font-size:13px;font-weight:600;">Mar 13, 2026</div>
-              <div style="font-size:11px;color:var(--text-muted);font-style:italic;">Read-only — contact admin to modify</div>
-            </div>
-          </div>
-
-          <!-- LINE ITEM 1 — EXPANDED / PROCESSING -->
-          <div style="border:1px solid var(--border);border-radius:4px;margin-bottom:10px;">
-            <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 12px;gap:12px;background:var(--tag-bg);border-bottom:1px solid var(--border);">
-              <div style="display:flex;align-items:center;gap:14px;">
-                <div>
-                  <div style="font-family:var(--mono);font-size:11px;font-weight:600;">532130969</div>
-                  <div style="font-size:12px;">Blade Assembly, 22"</div>
-                </div>
-                <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">Qty: 2</div>
-              </div>
-              <select class="fsel" style="font-size:11px;padding:4px 8px;border-color:#0369a1;color:#0369a1;font-weight:600;">
-                <option>Pending</option>
-                <option selected>Processing</option>
-                <option>Shipped</option>
-                <option>WNS</option>
-              </select>
-            </div>
-            <!-- LINE DETAIL -->
-            <div style="padding:12px;display:flex;flex-direction:column;gap:10px;">
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-                <div>
-                  <label class="lbl">Carrier</label>
-                  <select class="fsel" style="width:100%;margin-top:3px;"><option>UPS Ground</option><option>FedEx Ground</option><option>LTL Freight</option><option>Will Call</option></select>
-                </div>
-                <div>
-                  <label class="lbl">Tracking # <span style="font-size:9px;color:var(--text-muted);">(shown as link to retailer)</span></label>
-                  <input class="inp" style="width:100%;margin-top:3px;" placeholder="Enter tracking number" />
-                </div>
-              </div>
-              <!-- COMMENTS -->
-              <div>
-                <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);text-transform:uppercase;margin-bottom:6px;">Comments <span style="font-weight:400;text-transform:none;">(visible to retailer)</span></div>
-                <div style="background:var(--surface);border:1px solid var(--border);padding:8px 10px;font-size:11px;margin-bottom:6px;">
-                  <span style="font-family:var(--mono);font-size:9px;color:var(--text-muted);">Mar 13 · You</span><br/>
-                  Item pulled and staged. Awaiting carrier pickup.
-                </div>
-                <div style="display:flex;gap:6px;">
-                  <input class="inp" style="flex:1;font-size:11px;" placeholder="Add a comment…" />
-                  <button class="btn btn-sm">Post</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- LINE ITEM 2 — PENDING, COLLAPSED -->
-          <div style="border:1px solid var(--border);border-radius:4px;margin-bottom:10px;">
-            <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 12px;gap:12px;">
-              <div style="display:flex;align-items:center;gap:14px;">
-                <div>
-                  <div style="font-family:var(--mono);font-size:11px;font-weight:600;">532174358</div>
-                  <div style="font-size:12px;">Drive Belt, Rear Wheel</div>
-                </div>
-                <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">Qty: 1</div>
-              </div>
-              <select class="fsel" style="font-size:11px;padding:4px 8px;">
-                <option selected>Pending</option>
-                <option>Processing</option>
-                <option>Shipped</option>
-                <option>WNS</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- LINE ITEM 3 — SHIPPED, COLLAPSED -->
-          <div style="border:1px solid #bbf7d0;border-radius:4px;margin-bottom:10px;background:#f0fdf4;">
-            <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 12px;gap:12px;">
-              <div style="display:flex;align-items:center;gap:14px;">
-                <div>
-                  <div style="font-family:var(--mono);font-size:11px;font-weight:600;">532110452</div>
-                  <div style="font-size:12px;">Air Filter Cartridge</div>
-                </div>
-                <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">Qty: 3</div>
-                <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">UPS · <span style="color:#0369a1;text-decoration:underline;cursor:pointer;">1Z999AA10123456784</span></div>
-              </div>
-              <select class="fsel" style="font-size:11px;padding:4px 8px;border-color:#16a34a;color:#16a34a;font-weight:600;" disabled>
-                <option>Shipped</option>
-              </select>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- SIDEBAR -->
-      <div>
-        <div class="panel" style="margin-bottom:14px;">
-          <div class="phdr">Line Summary</div>
-          <div class="pbody">
-            <div style="display:flex;flex-direction:column;gap:7px;font-size:11px;">
-              <div style="display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-family:var(--mono);font-size:10px;">532130969</span>
-                <span class="badge badge-processing">Processing</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-family:var(--mono);font-size:10px;">532174358</span>
-                <span class="badge badge-pending">Pending</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-family:var(--mono);font-size:10px;">532110452</span>
-                <span class="badge badge-shipped">Shipped</span>
-              </div>
-            </div>
-            <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--text-muted);">Order completes when all lines reach <strong>Shipped</strong> or <strong>WNS</strong>.</div>
-          </div>
-        </div>
-
-        <!-- PROCESSED ORDER EXAMPLE -->
-        <div class="panel" style="border-color:#16a34a;">
-          <div class="phdr" style="background:#f0fdf4;border-color:#bbf7d0;color:#166534;">ORD-20430 — Processed</div>
-          <div class="pbody">
-            <div style="font-size:11px;color:#166534;font-weight:600;margin-bottom:8px;">All lines complete — order locked</div>
-            <div style="display:flex;flex-direction:column;gap:6px;font-size:11px;">
-              <div style="display:flex;justify-content:space-between;">
-                <span style="font-family:var(--mono);font-size:10px;">532130969</span>
-                <span class="badge badge-shipped">Shipped</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;">
-                <span style="font-family:var(--mono);font-size:10px;">532174358</span>
-                <span class="badge badge-wns">WNS</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;">
-                <span style="font-family:var(--mono);font-size:10px;">532110452</span>
-                <span class="badge badge-shipped">Shipped</span>
-              </div>
-            </div>
-            <div style="margin-top:10px;font-size:10px;color:var(--text-muted);font-style:italic;">This order is immutable. No further changes allowed.</div>
-          </div>
+      <div class="pbody" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--border);">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Showing 1–50 of 286 orders</div>
+        <div class="pager" style="margin-top:0;">
+          <div class="pgbtn" style="width:auto;padding:0 10px;">← Previous</div>
+          <div class="pgbtn" style="width:auto;padding:0 10px;">Next →</div>
         </div>
       </div>
     </div>

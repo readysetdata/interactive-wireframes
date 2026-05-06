@@ -14,6 +14,24 @@
     if (el) el.classList.add('active');
     closePartPopup();
   }
+  function toggleVendorOrder(id) {
+    const target = document.getElementById(id);
+    const isOpen = target.classList.contains('open');
+    document.querySelectorAll('#vendor-portal .exprow').forEach(function(row) {
+      row.classList.remove('open');
+    });
+    if (!isOpen) target.classList.add('open');
+  }
+  function toggleVendorTracking(orderId, useShared) {
+    const order = document.getElementById(orderId);
+    const shared = order.querySelector('.vendor-shared-tracking');
+    const lineInputs = order.querySelectorAll('.vendor-line-tracking');
+    if (shared) shared.style.display = useShared ? 'block' : 'none';
+    lineInputs.forEach(function(input) {
+      input.disabled = useShared;
+      input.style.opacity = useShared ? '0.45' : '1';
+    });
+  }
 
   function showPartPopup(el, partNum, partName, max) {
     closePartPopup();
