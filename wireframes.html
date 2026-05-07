@@ -38,6 +38,9 @@
   <a onclick="show('vendor-portal')">13·Vendor Orders</a>
   <a onclick="show('vendor-forgot')">13b·Forgot Password</a>
   <a onclick="show('vendor-account')">13c·Account</a>
+  <div class="pdiv"></div>
+  <span class="ps">Shared</span>
+  <a onclick="show('select-membership')">14·Select Account</a>
 </nav>
 
 
@@ -70,7 +73,7 @@
       <div class="tlogo">RETAILER PORTAL</div>
       <div class="tlinks"><span class="on">Browse</span><span onclick="show('retailer-orders')">My Orders</span><span onclick="show('retailer-account')">Account</span></div>
     </div>
-    <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
+    <div class="tright"><span onclick="show('select-membership')" style="cursor:pointer;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Switch Account</span><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
   </div>
   <div class="layout">
     <div class="sidebar">
@@ -145,7 +148,7 @@
 <div id="product" class="screen">
   <div class="tnav">
     <div style="display:flex;align-items:center;gap:22px;"><div class="tlogo">RETAILER PORTAL</div><div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('retailer-orders')">My Orders</span><span onclick="show('retailer-account')">Account</span></div></div>
-    <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
+    <div class="tright"><span onclick="show('select-membership')" style="cursor:pointer;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Switch Account</span><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
   </div>
   <div class="main">
     <div class="bc"><span onclick="show('catalog')" style="cursor:pointer;">Browse</span><span class="bcsep">›</span>Outdoor Power<span class="bcsep">›</span>Lawn Mowers<span class="bcsep">›</span><strong>Husqvarna LM-2200</strong></div>
@@ -239,6 +242,30 @@
               <div class="hs" style="top:48%;left:54%;" onclick="showPartPopup(this,'HV-HNG-2200','Hinge Assembly',1)">1</div>
             </div>
           </div>
+          <div id="product-view-partslist" data-view-group="product-gallery" style="display:none;">
+            <div style="padding:4px 0;">
+              <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-bottom:10px;">All 8 parts — page 1 of 3</div>
+              <table class="tbl" style="border:none;">
+                <thead><tr><th>Part #</th><th>Name</th><th>Max Qty</th><th>Qty</th><th>Add</th></tr></thead>
+                <tbody>
+                  <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-1</td><td>Handle Assembly</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 5</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(5,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm">Add</button></td></tr>
+                  <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-2</td><td>Upper Frame Bracket</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 3</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(3,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm">Add</button></td></tr>
+                  <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-3</td><td>Drive Housing</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 2</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(2,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm">Add</button></td></tr>
+                  <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-4</td><td>Carburetor Assembly</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 1</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(1,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm">Add</button></td></tr>
+                  <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-5</td><td>Fuel Line</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 4</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(4,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm">Add</button></td></tr>
+                  <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-6</td><td>Air Filter Housing</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 2</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(2,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm">Add</button></td></tr>
+                  <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-7</td><td>Belt Cover</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 3</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(3,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm">Add</button></td></tr>
+                  <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-8</td><td>Blade Adapter</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 2</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(2,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm">Add</button></td></tr>
+                </tbody>
+              </table>
+              <div class="pager" style="margin-top:12px;">
+                <div class="pgbtn on">1</div>
+                <div class="pgbtn">2</div>
+                <div class="pgbtn">3</div>
+                <div class="pgbtn" style="width:auto;padding:0 10px;">Next →</div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="panel" style="border-top:none;">
           <div class="pbody">
@@ -260,27 +287,26 @@
                 <div class="thumb-mini">STATIC IMAGE</div>
                 <div class="thumb-lbl">Hinge Image</div>
               </div>
+              <div class="thumb" data-thumb-group="product-gallery" onclick="setViewer('product-gallery','product-view-partslist', this)">
+                <div class="thumb-mini">LIST</div>
+                <div class="thumb-lbl">Parts List</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div>
-        <div class="ptitle" style="margin-bottom:2px;">Parts List</div>
-        <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-bottom:10px;">8 parts across 3 pages</div>
+        <div class="ptitle" style="margin-bottom:2px;">Selected Parts</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-bottom:10px;">3 parts added to cart</div>
         <table class="tbl">
-          <thead><tr><th>Part #</th><th>Name</th><th>Max Qty</th><th>Qty</th><th>Add</th></tr></thead>
+          <thead><tr><th>Part #</th><th>Name</th><th>Qty</th><th></th></tr></thead>
           <tbody>
-            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-1</td><td>Handle Assembly</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 5</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(5,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm" onclick="closePartPopup()">Add</button></td></tr>
-            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-2</td><td>Upper Frame Bracket</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 3</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(3,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm" onclick="closePartPopup()">Add</button></td></tr>
-            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-3</td><td>Drive Housing</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 2</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(2,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm" onclick="closePartPopup()">Add</button></td></tr>
-            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-4</td><td>Carburetor Assembly</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 1</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(1,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm" onclick="closePartPopup()">Add</button></td></tr>
-            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-5</td><td>Fuel Line</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 4</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(4,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm" onclick="closePartPopup()">Add</button></td></tr>
-            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-6</td><td>Air Filter Housing</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 2</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(2,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm" onclick="closePartPopup()">Add</button></td></tr>
-            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-7</td><td>Belt Cover</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 3</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(3,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm" onclick="closePartPopup()">Add</button></td></tr>
-            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-8</td><td>Blade Adapter</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Max 2</td><td><div class="qty"><div class="qbtn" onclick="var v=this.nextElementSibling;v.textContent=Math.max(0,parseInt(v.textContent,10)-1)">−</div><div class="qval">0</div><div class="qbtn" onclick="var v=this.previousElementSibling;v.textContent=Math.min(2,parseInt(v.textContent,10)+1)">+</div></div></td><td><button class="btn btn-sm" onclick="closePartPopup()">Add</button></td></tr>
+            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-1</td><td>Handle Assembly</td><td><div class="qty"><div class="qbtn">−</div><div class="qval">2</div><div class="qbtn">+</div></div></td><td><span style="font-family:var(--mono);font-size:10px;cursor:pointer;color:var(--text-muted);">✕ Remove</span></td></tr>
+            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-3</td><td>Drive Housing</td><td><div class="qty"><div class="qbtn">−</div><div class="qval">1</div><div class="qbtn">+</div></div></td><td><span style="font-family:var(--mono);font-size:10px;cursor:pointer;color:var(--text-muted);">✕ Remove</span></td></tr>
+            <tr><td style="font-family:var(--mono);font-size:10px;">HV-1-12-6</td><td>Air Filter Housing</td><td><div class="qty"><div class="qbtn">−</div><div class="qval">3</div><div class="qbtn">+</div></div></td><td><span style="font-family:var(--mono);font-size:10px;cursor:pointer;color:var(--text-muted);">✕ Remove</span></td></tr>
           </tbody>
         </table>
-        <button class="btn" style="width:100%;justify-content:center;margin-top:12px;" onclick="closePartPopup()">Add All Selected →</button>
+        <button class="btn" style="width:100%;justify-content:center;margin-top:12px;" onclick="show('cart')">View Cart (3) →</button>
       </div>
     </div>
     <div style="display:flex;justify-content:flex-end;gap:9px;">
@@ -1194,7 +1220,7 @@
         <span onclick="show('vendor-account')">Account</span>
       </div>
     </div>
-    <div class="tright"><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Husqvarna North America</span><div class="av">HV</div></div>
+    <div class="tright"><span onclick="show('select-membership')" style="cursor:pointer;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Switch Account</span><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Husqvarna North America</span><div class="av">HV</div></div>
   </div>
   <div class="main">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;padding-top:10px;">
@@ -1234,6 +1260,9 @@
           </div>
         </div>
       </div>
+      <div class="pbody" style="padding:11px 15px 0;">
+        <label style="display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;cursor:pointer;background:var(--tag-bg);border:2px solid var(--border);padding:6px 12px;margin-bottom:12px;"><input type="checkbox" /> Open Orders Only</label>
+      </div>
       <div class="pbody" style="padding:0;">
         <table class="tbl" style="border:none;">
           <thead>
@@ -1254,8 +1283,8 @@
               <td style="font-size:11px;color:var(--text-muted);">Store #0621 — Atlanta, GA</td>
               <td style="font-family:var(--mono);font-size:11px;">3 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 13, 2026</td>
-              <td><span class="badge badge-pending">Pending</span></td>
-              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20482')">Expand Order</button></td>
+              <td><span class="badge badge-incomplete">Incomplete</span></td>
+              <td><button class="btn btn-sm expand-toggle-btn" onclick="toggleVendorOrder('vendor-order-20482', this)">Expand</button></td>
             </tr>
             <tr id="vendor-order-20482" class="exprow">
               <td colspan="7">
@@ -1267,8 +1296,8 @@
                     <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">UPS Ground<br/>Dock hours: 7am–3pm<br/>PO-2026-00821</div></div>
                   </div>
                   <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Update each line item individually. Complete the order when every line reaches <strong>Shipped</strong> or <strong>WNS</strong>.</div>
-                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
-                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20482', this.checked)" /> All items same tracking</label>
+                  <div style="margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;margin-bottom:8px;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20482', this.checked)" /> All items same tracking</label>
                     <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
                       <label class="lbl">Shared Tracking Number</label>
                       <input class="inp" style="font-size:11px;" value="1Z999AA10123456784" />
@@ -1284,8 +1313,7 @@
                   </table>
                   <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
                     <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Pulled two lines, third in progress" /></div>
-                    <button class="btn btn-o btn-sm">Save Progress</button>
-                    <button class="btn btn-sm">Complete Order</button>
+                    <button class="btn btn-sm">Submit</button>
                   </div>
                 </div>
               </td>
@@ -1296,8 +1324,8 @@
               <td style="font-size:11px;color:var(--text-muted);">Store #1142 — Charlotte, NC</td>
               <td style="font-family:var(--mono);font-size:11px;">7 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 13, 2026</td>
-              <td><span class="badge badge-processing">Processing</span></td>
-              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20479')">Expand Order</button></td>
+              <td><span class="badge badge-incomplete">Incomplete</span></td>
+              <td><button class="btn btn-sm expand-toggle-btn" onclick="toggleVendorOrder('vendor-order-20479', this)">Expand</button></td>
             </tr>
             <tr id="vendor-order-20479" class="exprow">
               <td colspan="7">
@@ -1309,8 +1337,8 @@
                     <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">FedEx Ground<br/>Receiving: 8am–4pm<br/>PO-2026-00819</div></div>
                   </div>
                   <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Use shared tracking if this shipment leaves under one label, or enter tracking separately by line item.</div>
-                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
-                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20479', this.checked)" /> All items same tracking</label>
+                  <div style="margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;margin-bottom:8px;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20479', this.checked)" /> All items same tracking</label>
                     <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
                       <label class="lbl">Shared Tracking Number</label>
                       <input class="inp" style="font-size:11px;" value="" />
@@ -1326,8 +1354,7 @@
                   </table>
                   <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
                     <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Awaiting final throttle lever pick" /></div>
-                    <button class="btn btn-o btn-sm">Save Progress</button>
-                    <button class="btn btn-sm">Complete Order</button>
+                    <button class="btn btn-sm">Submit</button>
                   </div>
                 </div>
               </td>
@@ -1338,8 +1365,8 @@
               <td style="font-size:11px;color:var(--text-muted);">Store #4502 — Nashville, TN</td>
               <td style="font-family:var(--mono);font-size:11px;">2 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 12, 2026</td>
-              <td><span class="badge badge-pending">Pending</span></td>
-              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20471')">Expand Order</button></td>
+              <td><span class="badge badge-incomplete">Incomplete</span></td>
+              <td><button class="btn btn-sm expand-toggle-btn" onclick="toggleVendorOrder('vendor-order-20471', this)">Expand</button></td>
             </tr>
             <tr id="vendor-order-20471" class="exprow">
               <td colspan="7">
@@ -1351,8 +1378,8 @@
                     <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">UPS Ground<br/>Receiving gate B<br/>PO-2026-00798</div></div>
                   </div>
                   <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Mark any unavailable parts as <strong>WNS</strong> and complete the order when all lines have final statuses.</div>
-                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
-                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20471', this.checked)" /> All items same tracking</label>
+                  <div style="margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;margin-bottom:8px;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20471', this.checked)" /> All items same tracking</label>
                     <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
                       <label class="lbl">Shared Tracking Number</label>
                       <input class="inp" style="font-size:11px;" value="" />
@@ -1368,8 +1395,7 @@
                   </table>
                   <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
                     <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Fuel cap unavailable, partial fulfillment ready" /></div>
-                    <button class="btn btn-o btn-sm">Save Progress</button>
-                    <button class="btn btn-sm">Complete Order</button>
+                    <button class="btn btn-sm">Submit</button>
                   </div>
                 </div>
               </td>
@@ -1380,8 +1406,8 @@
               <td style="font-size:11px;color:var(--text-muted);">Store #0318 — Memphis, TN</td>
               <td style="font-family:var(--mono);font-size:11px;">5 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 11, 2026</td>
-              <td><span class="badge badge-processing">Processing</span></td>
-              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20465')">Expand Order</button></td>
+              <td><span class="badge badge-incomplete">Incomplete</span></td>
+              <td><button class="btn btn-sm expand-toggle-btn" onclick="toggleVendorOrder('vendor-order-20465', this)">Expand</button></td>
             </tr>
             <tr id="vendor-order-20465" class="exprow">
               <td colspan="7">
@@ -1392,8 +1418,8 @@
                     <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">Carla James<br/>carla.james@lowes.com<br/>(901) 555-0198 x2</div></div>
                     <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">LTL Freight<br/>Dock hours: 6am–2pm<br/>PO-2026-00777</div></div>
                   </div>
-                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
-                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20465', this.checked)" /> All items same tracking</label>
+                  <div style="margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;margin-bottom:8px;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20465', this.checked)" /> All items same tracking</label>
                     <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
                       <label class="lbl">Shared Tracking Number</label>
                       <input class="inp" style="font-size:11px;" value="" />
@@ -1409,8 +1435,7 @@
                   </table>
                   <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
                     <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Shield backordered, remaining lines ready" /></div>
-                    <button class="btn btn-o btn-sm">Save Progress</button>
-                    <button class="btn btn-sm">Complete Order</button>
+                    <button class="btn btn-sm">Submit</button>
                   </div>
                 </div>
               </td>
@@ -1421,8 +1446,8 @@
               <td style="font-size:11px;color:var(--text-muted);">Store #0090 — Springfield, MO</td>
               <td style="font-family:var(--mono);font-size:11px;">11 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 10, 2026</td>
-              <td><span class="badge badge-wns">WNS</span></td>
-              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20458')">Expand Order</button></td>
+              <td><span class="badge badge-incomplete">Incomplete</span></td>
+              <td><button class="btn btn-sm expand-toggle-btn" onclick="toggleVendorOrder('vendor-order-20458', this)">Expand</button></td>
             </tr>
             <tr id="vendor-order-20458" class="exprow">
               <td colspan="7">
@@ -1433,8 +1458,8 @@
                     <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">Nolan Reed<br/>nolan.reed@basspro.com<br/>(417) 555-0170</div></div>
                     <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">UPS Ground<br/>Outdoor receiving bay<br/>PO-2026-00752</div></div>
                   </div>
-                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
-                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20458', this.checked)" /> All items same tracking</label>
+                  <div style="margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;margin-bottom:8px;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20458', this.checked)" /> All items same tracking</label>
                     <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
                       <label class="lbl">Shared Tracking Number</label>
                       <input class="inp" style="font-size:11px;" value="" />
@@ -1450,8 +1475,7 @@
                   </table>
                   <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
                     <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Gasket set unavailable, remaining lines in queue" /></div>
-                    <button class="btn btn-o btn-sm">Save Progress</button>
-                    <button class="btn btn-sm">Complete Order</button>
+                    <button class="btn btn-sm">Submit</button>
                   </div>
                 </div>
               </td>
@@ -1462,8 +1486,8 @@
               <td style="font-size:11px;color:var(--text-muted);">Store #6218 — Birmingham, AL</td>
               <td style="font-family:var(--mono);font-size:11px;">4 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 9, 2026</td>
-              <td><span class="badge badge-processing">Processing</span></td>
-              <td><button class="btn btn-sm" onclick="toggleVendorOrder('vendor-order-20441')">Expand Order</button></td>
+              <td><span class="badge badge-incomplete">Incomplete</span></td>
+              <td><button class="btn btn-sm expand-toggle-btn" onclick="toggleVendorOrder('vendor-order-20441', this)">Expand</button></td>
             </tr>
             <tr id="vendor-order-20441" class="exprow">
               <td colspan="7">
@@ -1474,8 +1498,8 @@
                     <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">Tia Morris<br/>tia.morris@homedepot.com<br/>(205) 555-0168</div></div>
                     <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">UPS Ground<br/>Receiving 9am–5pm<br/>PO-2026-00734</div></div>
                   </div>
-                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
-                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20441', this.checked)" /> All items same tracking</label>
+                  <div style="margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;margin-bottom:8px;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20441', this.checked)" /> All items same tracking</label>
                     <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
                       <label class="lbl">Shared Tracking Number</label>
                       <input class="inp" style="font-size:11px;" value="" />
@@ -1491,8 +1515,7 @@
                   </table>
                   <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
                     <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Spring still pending, shipped remaining lines" /></div>
-                    <button class="btn btn-o btn-sm">Save Progress</button>
-                    <button class="btn btn-sm">Complete Order</button>
+                    <button class="btn btn-sm">Submit</button>
                   </div>
                 </div>
               </td>
@@ -1503,8 +1526,8 @@
               <td style="font-size:11px;color:var(--text-muted);">Store #2211 — Knoxville, TN</td>
               <td style="font-family:var(--mono);font-size:11px;">6 line items</td>
               <td style="font-family:var(--mono);font-size:10px;">Mar 8, 2026</td>
-              <td><span class="badge badge-shipped">Shipped</span></td>
-              <td><button class="btn btn-g btn-sm" onclick="toggleVendorOrder('vendor-order-20430')">Expand Order</button></td>
+              <td><span class="badge badge-complete">Complete</span></td>
+              <td><button class="btn btn-g btn-sm expand-toggle-btn" onclick="toggleVendorOrder('vendor-order-20430', this)">Expand</button></td>
             </tr>
             <tr id="vendor-order-20430" class="exprow">
               <td colspan="7">
@@ -1515,8 +1538,8 @@
                     <div><div class="lbl">Store Contact</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">David Park<br/>david.park@lowes.com<br/>(865) 555-0135 x6</div></div>
                     <div><div class="lbl">Shipping Details</div><div style="font-size:11px;color:var(--text-muted);line-height:1.6;">UPS Ground<br/>Receiving: 7am–2pm<br/>PO-2026-00701</div></div>
                   </div>
-                  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
-                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20430', this.checked)" /> All items same tracking</label>
+                  <div style="margin-bottom:12px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-muted);cursor:pointer;margin-bottom:8px;"><input type="checkbox" onclick="toggleVendorTracking('vendor-order-20430', this.checked)" /> All items same tracking</label>
                     <div class="vendor-shared-tracking" style="display:none;min-width:260px;">
                       <label class="lbl">Shared Tracking Number</label>
                       <input class="inp" style="font-size:11px;" value="1Z999AA10123999001" />
@@ -1532,8 +1555,7 @@
                   </table>
                   <div style="display:flex;gap:10px;justify-content:flex-end;align-items:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
                     <div class="filter-block" style="min-width:240px;flex:1;"><label class="lbl">Vendor Note</label><input class="inp" style="font-size:11px;" value="Order complete, carrier pickup confirmed" /></div>
-                    <button class="btn btn-o btn-sm">Save Progress</button>
-                    <button class="btn btn-sm">Complete Order</button>
+                    <button class="btn btn-sm">Submit</button>
                   </div>
                 </div>
               </td>
@@ -1563,7 +1585,7 @@
         <div class="llogo">Parts Portal<span>Powered by Your Parts Solution · Lowe's</span></div>
         <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:16px;">Enter your email and we'll send reset instructions.</div>
         <div class="fld"><label class="lbl">Email Address</label><input class="inp" /></div>
-        <button class="btn" style="width:100%;justify-content:center;" onclick="setResetState('forgot',true)">Send reset link</button>
+        <button class="btn" style="width:100%;justify-content:center;" onclick="setResetState('forgot',true)">Send</button>
         <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);text-align:center;">
           <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);cursor:pointer;" onclick="show('login')">← Back to Sign In</span>
         </div>
@@ -1589,7 +1611,7 @@
       <div class="tlogo">RETAILER PORTAL</div>
       <div class="tlinks"><span onclick="show('catalog')">Browse</span><span class="on">My Orders</span><span onclick="show('retailer-account')">Account</span></div>
     </div>
-    <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
+    <div class="tright"><span onclick="show('select-membership')" style="cursor:pointer;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Switch Account</span><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
   </div>
   <div class="main">
     <div class="ptitle">My Orders</div>
@@ -1750,7 +1772,7 @@
       <div class="tlogo">RETAILER PORTAL</div>
       <div class="tlinks"><span onclick="show('catalog')">Browse</span><span onclick="show('retailer-orders')">My Orders</span><span class="on">Account</span></div>
     </div>
-    <div class="tright"><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
+    <div class="tright"><span onclick="show('select-membership')" style="cursor:pointer;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Switch Account</span><span onclick="show('cart')" style="cursor:pointer;font-family:var(--mono);font-size:11px;">Cart (3)</span><div class="av">JD</div></div>
   </div>
   <div class="main">
     <div class="ptitle">My Account</div>
@@ -1811,7 +1833,7 @@
         <div class="llogo">Parts Portal<span>Powered by Your Parts Solution · Vendor Portal</span></div>
         <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:16px;">Enter your email and we'll send reset instructions.</div>
         <div class="fld"><label class="lbl">Email Address</label><input class="inp" /></div>
-        <button class="btn" style="width:100%;justify-content:center;" onclick="setResetState('vendor-forgot',true)">Send reset link</button>
+        <button class="btn" style="width:100%;justify-content:center;" onclick="setResetState('vendor-forgot',true)">Send</button>
         <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);text-align:center;">
           <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);cursor:pointer;" onclick="show('login')">← Back to Sign In</span>
         </div>
@@ -1840,7 +1862,7 @@
         <span class="on">Account</span>
       </div>
     </div>
-    <div class="tright"><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Husqvarna North America</span><div class="av">HV</div></div>
+    <div class="tright"><span onclick="show('select-membership')" style="cursor:pointer;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Switch Account</span><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Husqvarna North America</span><div class="av">HV</div></div>
   </div>
   <div class="main">
     <div class="ptitle">My Account</div>
@@ -1888,6 +1910,86 @@
         <div style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Vendor membership and routing are managed centrally. Contact support to request changes.</div>
       </div>
     </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     14  SELECT / SWITCH MEMBERSHIP
+══════════════════════════════════════ -->
+<div id="select-membership" class="screen">
+  <div class="tnav">
+    <div style="display:flex;align-items:center;gap:22px;">
+      <div class="tlogo">PARTS PORTAL</div>
+    </div>
+    <div class="tright"><div class="av">JD</div></div>
+  </div>
+  <div class="main" style="max-width:560px;margin:0 auto;">
+
+    <!-- STATE TOGGLE (prototype only) -->
+    <div style="display:flex;gap:8px;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+      <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Preview state:</span>
+      <span style="font-family:var(--mono);font-size:10px;cursor:pointer;text-decoration:underline;" onclick="document.getElementById('membership-user-state').style.display='block';document.getElementById('membership-admin-state').style.display='none';">Regular User</span>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--text-light);">·</span>
+      <span style="font-family:var(--mono);font-size:10px;cursor:pointer;text-decoration:underline;" onclick="document.getElementById('membership-admin-state').style.display='block';document.getElementById('membership-user-state').style.display='none';">Admin</span>
+    </div>
+
+    <!-- STATE 1: Regular user — list of memberships -->
+    <div id="membership-user-state">
+      <div class="ptitle" style="margin-bottom:4px;">Select your account</div>
+      <div class="psub">Choose the membership you want to access</div>
+      <div class="panel">
+        <div class="phdr">Your Memberships</div>
+        <div class="pbody" style="padding:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 15px;border-bottom:1px solid var(--border);">
+            <div>
+              <div style="font-size:13px;font-weight:600;">Lowe's</div>
+              <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-top:2px;">Store #0621 · Atlanta, GA · Retailer</div>
+            </div>
+            <button class="btn btn-sm" onclick="show('catalog')">Select →</button>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 15px;border-bottom:1px solid var(--border);">
+            <div>
+              <div style="font-size:13px;font-weight:600;">Lowe's</div>
+              <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-top:2px;">Store #1142 · Charlotte, NC · Retailer</div>
+            </div>
+            <button class="btn btn-sm btn-o" onclick="show('catalog')">Select →</button>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 15px;">
+            <div>
+              <div style="font-size:13px;font-weight:600;">Husqvarna North America</div>
+              <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-top:2px;">VND-0042 · Vendor</div>
+            </div>
+            <button class="btn btn-sm btn-o" onclick="show('vendor-portal')">Select →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATE 2: Admin user — searchable dropdown -->
+    <div id="membership-admin-state" style="display:none;">
+      <div class="ptitle" style="margin-bottom:4px;">Select your account</div>
+      <div class="psub">Search and select the context you want to access</div>
+      <div class="panel">
+        <div class="phdr">Account Context</div>
+        <div class="pbody">
+          <div class="fld" style="margin-bottom:18px;">
+            <label class="lbl">Search accounts</label>
+            <input class="inp" placeholder="Type retailer name, store #, or vendor..." style="margin-bottom:8px;" />
+            <select class="inp" size="6" style="height:auto;padding:0;">
+              <option style="padding:9px 11px;">Lowe's — Store #0621 · Atlanta, GA (Retailer)</option>
+              <option style="padding:9px 11px;">Lowe's — Store #1142 · Charlotte, NC (Retailer)</option>
+              <option style="padding:9px 11px;">Lowe's — Store #0318 · Memphis, TN (Retailer)</option>
+              <option style="padding:9px 11px;">Home Depot — Store #4502 · Nashville, TN (Retailer)</option>
+              <option style="padding:9px 11px;">Husqvarna North America (Vendor)</option>
+              <option style="padding:9px 11px;">Troy-Bilt Parts (Vendor)</option>
+            </select>
+          </div>
+          <button class="btn" style="width:100%;justify-content:center;" onclick="show('account')">Access Selected Context →</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 

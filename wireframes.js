@@ -14,13 +14,19 @@
     if (el) el.classList.add('active');
     closePartPopup();
   }
-  function toggleVendorOrder(id) {
+  function toggleVendorOrder(id, btn) {
     const target = document.getElementById(id);
     const isOpen = target.classList.contains('open');
     document.querySelectorAll('#vendor-portal .exprow').forEach(function(row) {
       row.classList.remove('open');
     });
-    if (!isOpen) target.classList.add('open');
+    document.querySelectorAll('#vendor-portal .expand-toggle-btn').forEach(function(b) {
+      b.textContent = 'Expand';
+    });
+    if (!isOpen) {
+      target.classList.add('open');
+      if (btn) btn.textContent = 'Collapse';
+    }
   }
   function toggleVendorTracking(orderId, useShared) {
     const order = document.getElementById(orderId);
