@@ -1,0 +1,5 @@
+vendor_product_id,retailer,composition,name_en_us,description_en_us,product_upc,status,image_key
+LM-2200,lowes,assembly,"22"" Self Propelled Mower","Walk behind mower with variable speed rear wheel drive.",047362321916,published,products/8f2a41c6/hero.jpg
+LM-2400,lowes,assembly,"24"" Dual Blade Mower","Dual blade deck with bagging and mulching modes.",047362321923,draft,
+TR-115,academy,assembly,"Handheld String Trimmer","17 inch cutting path, dual line bump feed head.",047362328625,published,products/c41d9e20/hero.jpg
+BC-090,lowes,whole_good,"Replacement Blade Kit","Two blades and mounting hardware.",047362334817,published,products/19bb7f33/hero.jpg

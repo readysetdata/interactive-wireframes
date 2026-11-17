@@ -37,6 +37,24 @@ Interactive wireframe prototype for the ReadySetData platform — covering the r
 | 13 | Vendor Portal — Orders & Fulfillment | Done |
 | 13b | Vendor Forgot Password | Done |
 | 13c | Vendor Account / Profile | Done |
+| 15 | My Catalog — vendor product list | Concept (RAPI-885) |
+| 15b | Add Product — vendor intake form | Concept (RAPI-885) |
+| 15c | Export Catalog — CSV export | Concept (RAPI-885) |
+
+Screens 15 to 15c are exploratory, not agreed scope. They exist to make the RAPI-885
+discussion concrete and they encode three decisions from that card:
+
+- The form never asks a vendor for SKU, model, retail price, category, brand or max
+  order quantity. Those belong to the retailer. The sidebar states this explicitly.
+- Vendors upload a **source file**, not a finished asset. A raw photo or a PDF parts
+  catalog page is fine. Our team does the artwork pass and places callout markers,
+  because replacing a diagram destroys every marker bound to it.
+- Product UPC and part UPC are separate questions. Product UPC is worth collecting,
+  part UPC will come back mostly blank, and neither column exists in the schema yet.
+  Both are marked `Field TBD` in the form.
+
+Sample export files live in `csv-export-example/`. Three files rather than one, because
+a product has many parts and a part can sit on many products.
 
 ## Future / Out of Scope
 
@@ -66,9 +84,10 @@ If you have [VS Code](https://code.visualstudio.com/) installed:
 ## Files
 
 ```
-wireframes.html   — all screens and navigation
-wireframes.css    — styles
-wireframes.js     — screen switching and interactions
+wireframes.html        — all screens and navigation
+wireframes.css         — styles
+wireframes.js          — screen switching and interactions
+csv-export-example/    — sample vendor catalog export (products, parts, product_parts)
 ```
 
 ## Notes

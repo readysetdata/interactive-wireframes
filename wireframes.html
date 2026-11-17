@@ -38,6 +38,9 @@
   <a onclick="show('vendor-portal')">13·Vendor Orders</a>
   <a onclick="show('vendor-forgot')">13b·Forgot Password</a>
   <a onclick="show('vendor-account')">13c·Account</a>
+  <a onclick="show('vendor-catalog')">15·My Catalog</a>
+  <a onclick="show('vendor-product')">15b·Add Product</a>
+  <a onclick="show('vendor-export')">15c·CSV Export</a>
   <div class="pdiv"></div>
   <span class="ps">Shared</span>
   <a onclick="show('select-membership')">14·Select Account</a>
@@ -1908,6 +1911,393 @@
           </div>
         </div>
         <div style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Vendor membership and routing are managed centrally. Contact support to request changes.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ══════════════════════════════════════
+     15  VENDOR PORTAL — MY CATALOG
+══════════════════════════════════════ -->
+<div id="vendor-catalog" class="screen">
+  <div class="tnav">
+    <div style="display:flex;align-items:center;gap:22px;">
+      <div class="tlogo">VENDOR PORTAL</div>
+      <div class="tlinks">
+        <span onclick="show('vendor-portal')">Orders</span>
+        <span class="on">My Catalog</span>
+        <span onclick="show('vendor-account')">Account</span>
+      </div>
+    </div>
+    <div class="tright"><span onclick="show('select-membership')" style="cursor:pointer;font-family:var(--mono);font-size:10px;color:var(--text-muted);">Switch Account</span><span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">Husqvarna North America</span><div class="av">HV</div></div>
+  </div>
+  <div class="main">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;padding-top:10px;">
+      <div>
+        <div class="ptitle" style="font-size:20px;">My Catalog</div>
+        <div class="psub">Products and parts you supply. Submissions are reviewed before they go live.</div>
+      </div>
+      <div style="display:flex;gap:9px;">
+        <button class="btn btn-g btn-sm" onclick="show('vendor-export')">↓ Export CSV</button>
+        <button class="btn btn-sm" onclick="show('vendor-product')">+ Add Product</button>
+      </div>
+    </div>
+
+    <div class="stats" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px;">
+      <div class="stat"><div class="slbl">Published Products</div><div class="sval">84</div></div>
+      <div class="stat"><div class="slbl">Draft / Awaiting Assets</div><div class="sval" style="color:#b45309;">6</div></div>
+      <div class="stat"><div class="slbl">Distinct Parts</div><div class="sval">1,412</div></div>
+      <div class="stat"><div class="slbl">Retailer Relationships</div><div class="sval">2</div></div>
+    </div>
+
+    <div class="panel">
+      <div class="phdr">Products</div>
+      <div class="pbody" style="padding-bottom:0;">
+        <div class="filter-row" style="margin-bottom:16px;">
+          <div class="filter-block" style="min-width:220px;">
+            <label class="lbl">Search</label>
+            <input class="inp" placeholder="Model or part number" />
+          </div>
+          <div class="filter-block">
+            <label class="lbl">Retailer</label>
+            <select class="sel"><option>All retailers</option><option>Lowe's</option><option>Academy</option></select>
+          </div>
+          <div class="filter-block">
+            <label class="lbl">Status</label>
+            <select class="sel"><option>All</option><option>Published</option><option>Draft</option><option>Archived</option></select>
+          </div>
+        </div>
+
+        <table class="tbl" style="width:100%;border-collapse:collapse;">
+          <tr>
+            <th>Your Product ID</th><th>Name</th><th>Composition</th><th>Retailer</th><th>Parts</th><th>Assets</th><th>Status</th><th></th>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;">LM-2200</td>
+            <td>22" Self Propelled Mower</td>
+            <td style="font-size:12px;color:var(--text-muted);">Assembly</td>
+            <td style="font-size:12px;">Lowe's</td>
+            <td style="font-family:var(--mono);font-size:11px;">47</td>
+            <td><span class="badge badge-complete">Complete</span></td>
+            <td><span class="badge badge-shipped">Published</span></td>
+            <td style="text-align:right;"><button class="btn btn-g btn-sm" onclick="show('vendor-product')">Edit</button></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;">LM-2400</td>
+            <td>24" Dual Blade Mower</td>
+            <td style="font-size:12px;color:var(--text-muted);">Assembly</td>
+            <td style="font-size:12px;">Lowe's</td>
+            <td style="font-family:var(--mono);font-size:11px;">52</td>
+            <td><span class="badge badge-incomplete">Awaiting diagram</span></td>
+            <td><span class="badge badge-pending">Draft</span></td>
+            <td style="text-align:right;"><button class="btn btn-g btn-sm" onclick="show('vendor-product')">Edit</button></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;">TR-115</td>
+            <td>Handheld String Trimmer</td>
+            <td style="font-size:12px;color:var(--text-muted);">Assembly</td>
+            <td style="font-size:12px;">Academy</td>
+            <td style="font-family:var(--mono);font-size:11px;">23</td>
+            <td><span class="badge badge-complete">Complete</span></td>
+            <td><span class="badge badge-shipped">Published</span></td>
+            <td style="text-align:right;"><button class="btn btn-g btn-sm" onclick="show('vendor-product')">Edit</button></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;">BC-090</td>
+            <td>Replacement Blade Kit</td>
+            <td style="font-size:12px;color:var(--text-muted);">Whole Good</td>
+            <td style="font-size:12px;">Lowe's</td>
+            <td style="font-family:var(--mono);font-size:11px;">0</td>
+            <td><span class="badge badge-complete">No diagram needed</span></td>
+            <td><span class="badge badge-shipped">Published</span></td>
+            <td style="text-align:right;"><button class="btn btn-g btn-sm" onclick="show('vendor-product')">Edit</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;background:var(--tag-bg);border:1px solid var(--border);padding:12px 14px;font-size:12px;color:var(--text-muted);line-height:1.6;">
+      <strong style="color:var(--text);">Why you do not see price, SKU or category here.</strong><br/>
+      Those belong to the retailer, not to you. Each retailer assigns their own SKU, sets their own price and files the product under their own categories. You supply the product, the parts and the diagrams.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     15B  VENDOR PORTAL — ADD / EDIT PRODUCT
+══════════════════════════════════════ -->
+<div id="vendor-product" class="screen">
+  <div class="tnav">
+    <div style="display:flex;align-items:center;gap:22px;">
+      <div class="tlogo">VENDOR PORTAL</div>
+      <div class="tlinks">
+        <span onclick="show('vendor-portal')">Orders</span>
+        <span class="on">My Catalog</span>
+        <span onclick="show('vendor-account')">Account</span>
+      </div>
+    </div>
+    <div class="tright"><button class="btn btn-g btn-sm" onclick="show('vendor-catalog')">← Cancel</button><div class="av">HV</div></div>
+  </div>
+  <div class="main">
+    <div class="ptitle">Add Product</div>
+    <div class="psub">Saves as a draft. Nothing is visible to a retailer until our team reviews it.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 270px;gap:22px;margin-top:18px;">
+      <div>
+
+        <!-- PRODUCT -->
+        <div class="panel" style="margin-bottom:16px;">
+          <div class="phdr">Product</div>
+          <div class="pbody">
+            <div class="frow">
+              <div class="fld">
+                <label class="lbl">Your Product ID <span style="color:#c0392b;">*</span></label>
+                <input class="inp" placeholder="LM-2200" />
+                <div style="font-size:10px;color:var(--text-muted);margin-top:4px;">Whatever you call it in your own system.</div>
+              </div>
+              <div class="fld">
+                <label class="lbl">Composition <span style="color:#c0392b;">*</span></label>
+                <select class="sel"><option>Assembly</option><option>Whole Good</option></select>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:4px;">Assembly has replaceable parts. Whole Good does not.</div>
+              </div>
+            </div>
+            <div class="frow">
+              <div class="fld">
+                <label class="lbl">Retailer <span style="color:#c0392b;">*</span></label>
+                <select class="sel"><option>Lowe's</option><option>Academy</option></select>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:4px;">Which retailer this model is built for.</div>
+              </div>
+              <div class="fld">
+                <label class="lbl">
+                  Product UPC
+                  <span style="font-family:var(--mono);font-size:9px;background:#fef3e2;color:#92500a;border:1px solid #f6cc8a;padding:1px 5px;border-radius:3px;margin-left:5px;">⚠ Field TBD</span>
+                </label>
+                <input class="inp" placeholder="047362321916" />
+                <div style="font-size:10px;color:var(--text-muted);margin-top:4px;">The finished product's UPC, not a part's. Not yet in the schema.</div>
+              </div>
+            </div>
+            <div class="fld"><label class="lbl">Product Name <span style="color:#c0392b;">*</span></label><input class="inp" placeholder='22" Self Propelled Mower' /></div>
+            <div class="fld"><label class="lbl">Description</label><textarea class="inp" rows="3" placeholder="Shown to retailers and shoppers..."></textarea></div>
+          </div>
+        </div>
+
+        <!-- PARTS -->
+        <div class="panel" style="margin-bottom:16px;">
+          <div class="phdr">Parts On This Product</div>
+          <div class="pbody">
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Part numbers must be unique within your catalog. A part that appears on several products is entered once and reused.</div>
+            <div style="overflow-x:auto;margin-bottom:12px;">
+            <table class="tbl" style="width:100%;min-width:520px;border-collapse:collapse;">
+              <tr><th style="width:140px;">Part Number *</th><th>Part Name *</th><th style="width:90px;">Callout #</th><th style="width:40px;"></th></tr>
+              <tr>
+                <td><input class="inp" style="font-family:var(--mono);font-size:11px;" value="532193736" /></td>
+                <td><input class="inp" value="Blade Adapter Assembly" /></td>
+                <td><input class="inp" style="font-family:var(--mono);font-size:11px;" value="14" /></td>
+                <td style="text-align:center;color:var(--text-light);cursor:pointer;">×</td>
+              </tr>
+              <tr>
+                <td><input class="inp" style="font-family:var(--mono);font-size:11px;" value="532401030" /></td>
+                <td><input class="inp" value="Drive Belt" /></td>
+                <td><input class="inp" style="font-family:var(--mono);font-size:11px;" value="27" /></td>
+                <td style="text-align:center;color:var(--text-light);cursor:pointer;">×</td>
+              </tr>
+              <tr>
+                <td><input class="inp" style="font-family:var(--mono);font-size:11px;" placeholder="Part number" /></td>
+                <td><input class="inp" placeholder="Part name" /></td>
+                <td><input class="inp" style="font-family:var(--mono);font-size:11px;" placeholder="—" /></td>
+                <td style="text-align:center;color:var(--text-light);"></td>
+              </tr>
+            </table>
+            </div>
+            <div style="display:flex;gap:9px;">
+              <button class="btn btn-g btn-sm">+ Add Row</button>
+              <button class="btn btn-g btn-sm">↑ Paste From Spreadsheet</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOURCE FILES -->
+        <div class="panel" style="margin-bottom:16px;">
+          <div class="phdr">Source Files</div>
+          <div class="pbody">
+            <div style="background:#fef3e2;border:1px solid #f6cc8a;padding:11px 13px;font-size:11px;color:#92500a;line-height:1.6;margin-bottom:14px;">
+              <strong>Send us what you have, not what you think we need.</strong><br/>
+              A raw photo, a scanned page, or a PDF of your parts catalog are all fine. Our team does the finishing pass and places the callout markers. Do not crop or edit anything first.
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:10px;background:var(--tag-bg);border:1px solid var(--border);padding:9px 12px;">
+                <div style="font-family:var(--mono);font-size:10px;font-weight:600;min-width:110px;">Product Photo</div>
+                <div class="iph" style="flex:1;height:36px;font-size:9px;margin:0;">[ lm-2200-hero.jpg ]</div>
+                <button class="btn btn-g btn-sm">Replace</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;background:var(--tag-bg);border:1px solid var(--border);padding:9px 12px;">
+                <div style="font-family:var(--mono);font-size:10px;font-weight:600;min-width:110px;">Diagram Page 1</div>
+                <div class="iph" style="flex:1;height:36px;font-size:9px;margin:0;">[ parts-catalog-p14.pdf ]</div>
+                <button class="btn btn-g btn-sm">Replace</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;background:var(--tag-bg);border:1px solid var(--border);padding:9px 12px;">
+                <div style="font-family:var(--mono);font-size:10px;font-weight:600;min-width:110px;">Diagram Page 2</div>
+                <div class="iph" style="flex:1;height:36px;font-size:9px;margin:0;">[ empty — optional ]</div>
+                <button class="btn btn-sm">↑ Upload</button>
+              </div>
+              <button class="btn btn-g btn-sm" style="align-self:flex-start;">+ Add Another Page</button>
+            </div>
+            <div style="font-size:10px;color:var(--text-muted);margin-top:12px;">Accepted: JPG, PNG, GIF or PDF. 10MB per file. A product with no diagram is fine, leave it empty.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:9px;justify-content:flex-end;">
+          <button class="btn btn-o" onclick="show('vendor-catalog')">Cancel</button>
+          <button class="btn" onclick="show('vendor-catalog')">Save Draft</button>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <div class="panel" style="margin-bottom:14px;">
+          <div class="phdr">We Do Not Ask You For</div>
+          <div class="pbody">
+            <div style="font-family:var(--mono);font-size:10px;line-height:2.1;color:var(--text-muted);">
+              ✕ Retailer SKU<br/>
+              ✕ Retailer model number<br/>
+              ✕ Retail price<br/>
+              ✕ Category<br/>
+              ✕ Brand<br/>
+              ✕ Max order quantity<br/>
+              ✕ Marker coordinates
+            </div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">Every one of these belongs to the retailer or to us. Asking you for them would only create data nobody can stand behind.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="phdr">What Happens Next</div>
+          <div class="pbody">
+            <div style="font-family:var(--mono);font-size:10px;line-height:2.1;color:var(--text-muted);">
+              <span style="color:var(--text);font-weight:600;">● You save a draft</span><br/>
+              ○ We finish the artwork<br/>
+              ○ We place callout markers<br/>
+              ○ Retailer adds SKU and price<br/>
+              ○ Published
+            </div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">You can keep editing text while a draft waits on artwork.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     15C  VENDOR PORTAL — CSV EXPORT
+══════════════════════════════════════ -->
+<div id="vendor-export" class="screen">
+  <div class="tnav">
+    <div style="display:flex;align-items:center;gap:22px;">
+      <div class="tlogo">VENDOR PORTAL</div>
+      <div class="tlinks">
+        <span onclick="show('vendor-portal')">Orders</span>
+        <span class="on">My Catalog</span>
+        <span onclick="show('vendor-account')">Account</span>
+      </div>
+    </div>
+    <div class="tright"><button class="btn btn-g btn-sm" onclick="show('vendor-catalog')">← Back to Catalog</button><div class="av">HV</div></div>
+  </div>
+  <div class="main">
+    <div class="ptitle">Export Catalog</div>
+    <div class="psub">Everything we hold for you, in a fixed column order. Use it to check our records against yours.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 270px;gap:22px;margin-top:18px;">
+      <div>
+        <div class="panel" style="margin-bottom:16px;">
+          <div class="phdr">Export Options</div>
+          <div class="pbody">
+            <div class="frow">
+              <div class="fld"><label class="lbl">Retailer</label><select class="sel"><option>All retailers</option><option>Lowe's</option><option>Academy</option></select></div>
+              <div class="fld"><label class="lbl">Status</label><select class="sel"><option>All</option><option>Published only</option><option>Draft only</option></select></div>
+            </div>
+            <div style="display:flex;gap:18px;margin-top:4px;">
+              <label class="chkrow" style="margin:0;"><div class="chk on">✓</div><span style="font-size:12px;">products.csv</span></label>
+              <label class="chkrow" style="margin:0;"><div class="chk on">✓</div><span style="font-size:12px;">parts.csv</span></label>
+              <label class="chkrow" style="margin:0;"><div class="chk on">✓</div><span style="font-size:12px;">product_parts.csv</span></label>
+            </div>
+            <div style="display:flex;gap:9px;margin-top:16px;">
+              <button class="btn btn-sm">↓ Download ZIP</button>
+              <button class="btn btn-g btn-sm">Email To Me</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-bottom:16px;">
+          <div class="phdr">products.csv — preview</div>
+          <div class="pbody" style="padding-bottom:0;overflow-x:auto;">
+            <table class="tbl" style="width:100%;border-collapse:collapse;white-space:nowrap;">
+              <tr><th>vendor_product_id</th><th>retailer</th><th>composition</th><th>name_en_us</th><th>description_en_us</th><th>product_upc</th><th>status</th><th>image_key</th></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">LM-2200</td><td style="font-size:12px;">lowes</td><td style="font-size:12px;">assembly</td><td style="font-size:12px;">22" Self Propelled Mower</td><td style="font-size:12px;color:var(--text-muted);">Walk behind mower with...</td><td style="font-family:var(--mono);font-size:11px;">047362321916</td><td style="font-size:12px;">published</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">products/8f2a.../hero.jpg</td></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">LM-2400</td><td style="font-size:12px;">lowes</td><td style="font-size:12px;">assembly</td><td style="font-size:12px;">24" Dual Blade Mower</td><td style="font-size:12px;color:var(--text-muted);">Dual blade deck with...</td><td style="font-family:var(--mono);font-size:11px;">047362321923</td><td style="font-size:12px;">draft</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-light);"></td></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">TR-115</td><td style="font-size:12px;">academy</td><td style="font-size:12px;">assembly</td><td style="font-size:12px;">Handheld String Trimmer</td><td style="font-size:12px;color:var(--text-muted);">17 inch cutting path...</td><td style="font-family:var(--mono);font-size:11px;">047362328625</td><td style="font-size:12px;">published</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">products/c41d.../hero.jpg</td></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">BC-090</td><td style="font-size:12px;">lowes</td><td style="font-size:12px;">whole_good</td><td style="font-size:12px;">Replacement Blade Kit</td><td style="font-size:12px;color:var(--text-muted);">Two blades and hardware</td><td style="font-family:var(--mono);font-size:11px;">047362334817</td><td style="font-size:12px;">published</td><td style="font-family:var(--mono);font-size:10px;color:var(--text-muted);">products/19bb.../hero.jpg</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-bottom:16px;">
+          <div class="phdr">parts.csv — preview</div>
+          <div class="pbody" style="padding-bottom:0;overflow-x:auto;">
+            <table class="tbl" style="width:100%;border-collapse:collapse;white-space:nowrap;">
+              <tr><th>part_number</th><th>name_en_us</th><th>description_en_us</th><th>part_upc</th><th>status</th></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">532193736</td><td style="font-size:12px;">Blade Adapter Assembly</td><td style="font-size:12px;color:var(--text-muted);">Fits 22 and 24 inch decks</td><td style="font-family:var(--mono);font-size:11px;color:var(--text-light);"></td><td style="font-size:12px;">published</td></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">532401030</td><td style="font-size:12px;">Drive Belt</td><td style="font-size:12px;color:var(--text-muted);">V belt, 36 inch</td><td style="font-family:var(--mono);font-size:11px;color:var(--text-light);"></td><td style="font-size:12px;">published</td></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">532130794</td><td style="font-size:12px;">Front Wheel 8 inch</td><td style="font-size:12px;color:var(--text-muted);">Sold individually</td><td style="font-family:var(--mono);font-size:11px;color:var(--text-light);"></td><td style="font-size:12px;">published</td></tr>
+            </table>
+            <div style="font-size:10px;color:var(--text-muted);padding:10px 0 14px;">part_upc is empty on most rows. Replacement parts are rarely sold individually at retail, so they usually have no UPC at all.</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="phdr">product_parts.csv — preview</div>
+          <div class="pbody" style="padding-bottom:0;overflow-x:auto;">
+            <table class="tbl" style="width:100%;border-collapse:collapse;white-space:nowrap;">
+              <tr><th>vendor_product_id</th><th>part_number</th><th>callout_number</th><th>schematic_page</th></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">LM-2200</td><td style="font-family:var(--mono);font-size:11px;">532193736</td><td style="font-family:var(--mono);font-size:11px;">14</td><td style="font-family:var(--mono);font-size:11px;">1</td></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">LM-2200</td><td style="font-family:var(--mono);font-size:11px;">532401030</td><td style="font-family:var(--mono);font-size:11px;">27</td><td style="font-family:var(--mono);font-size:11px;">1</td></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">LM-2400</td><td style="font-family:var(--mono);font-size:11px;">532193736</td><td style="font-family:var(--mono);font-size:11px;">14</td><td style="font-family:var(--mono);font-size:11px;">1</td></tr>
+              <tr><td style="font-family:var(--mono);font-size:11px;">LM-2400</td><td style="font-family:var(--mono);font-size:11px;">532130794</td><td style="font-family:var(--mono);font-size:11px;">31</td><td style="font-family:var(--mono);font-size:11px;">2</td></tr>
+            </table>
+            <div style="font-size:10px;color:var(--text-muted);padding:10px 0 14px;">Part 532193736 appears on two products. That is expected and correct.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <div class="panel" style="margin-bottom:14px;">
+          <div class="phdr">Three Files, Not One</div>
+          <div class="pbody">
+            <div style="font-size:11px;color:var(--text-muted);line-height:1.7;">
+              A product has many parts and a part can sit on many products, so it will not flatten into a single sheet without repeating itself. Three files keep each fact in one place.
+            </div>
+          </div>
+        </div>
+        <div class="panel" style="margin-bottom:14px;">
+          <div class="phdr">Images Do Not Export</div>
+          <div class="pbody">
+            <div style="font-size:11px;color:var(--text-muted);line-height:1.7;">
+              Photos and diagrams stay in storage. The CSV carries a reference key only, so re-importing a spreadsheet will never bring artwork back with it.
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="phdr">Same Shape In Both Directions</div>
+          <div class="pbody">
+            <div style="font-size:11px;color:var(--text-muted);line-height:1.7;">
+              These are the exact columns the bulk upload accepts. Export, edit in your own tools, upload the same file back.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
